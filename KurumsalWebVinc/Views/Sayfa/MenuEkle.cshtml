@@ -1,0 +1,106 @@
+﻿@model             Icerik
+
+@{
+    ViewData["Title"] = "MenuEkle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>MenuEkle</h1>
+
+<h4>Icerik</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="MenuEkle">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Baslik" class="control-label"></label>
+                <input asp-for="Baslik" class="control-label" disabled />
+                <span asp-validation-for="Baslik" class="text-danger"></span>
+            </div>
+          
+            <div class="form-group">
+                <label asp-for="KisaYazi" class="control-label"></label>
+                <input  asp-for="KisaYazi" class="control-label" disabled />
+                <span asp-validation-for="KisaYazi" class="text-danger"></span>
+            </div>
+            
+                <input  type="hidden" asp-for="Yazar" class="control-control" />
+             
+                <input type="hidden"  asp-for="Url" class="form-control" />
+            
+                <input  type="hidden"  asp-for="KucukResim" class="form-control" />
+           
+                <input  type="hidden"  asp-for="SeoBaslik" class="form-control" />
+          <input  type="hidden"  asp-for="Metin" class="form-control" />
+             <input type="hidden" asp-for="Etiket" class="form-control" />
+                <input type="hidden" asp-for="SeoAciklama" class="form-control" />
+        
+            <div class="form-group">
+                 <label   class="control-label"> Menu Adı  </label>
+                 <select asp-for="MenuId" 
+                         asp-items="@(new SelectList(@ViewBag.MenuList,"Value","Text"))">
+                      
+                  </select>
+                
+            </div>
+
+           
+                
+                    <div class="form-group" id="altmenu"   >
+                             <label   class="control-label"> Alt Menu Adı  </label>
+                         <select asp-for="AltMenuId" 
+                         asp-items="@(new SelectList(@ViewBag.MenuAltList,"Value","Text"))">
+                     
+                         </select>
+                        <span asp-validation-for="AltMenuId" class="text-danger"></span>
+                    </div>
+          
+            
+            
+             
+              
+                    <input  type="hidden" class="form-check-input" asp-for="Durum" /> 
+              
+            
+           
+            <div class="form-group">
+                <input type="submit" value="Kaydet" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+ 
+ @section Scripts {
+
+ <script>
+$(function() {
+    $('#MenuId').change(function() {
+        var id = $('#MenuId').val();
+        $.ajax({
+            url:'/Sayfa/AltMenuGetir',
+            data: {id},
+            type:"Post",
+            dataType:"Json",
+            success: function(data) {
+                if (data.length > 0) { $('#altmenu').show(); }
+                else {  $('#altmenu').hide();}
+                
+                $('#AltMenuId').empty();
+
+                for (var i = 0; i < data.length; i++) {
+                    //alert(data[i]);
+                    // console.log(data[i]);
+                    $('#AltMenuId').append("<option value ='" + data[i].value + "'>"
+                        +data[i].text + "</option>");
+                }
+            }
+        })
+
+        //alert(id);
+    })
+})
+ </script>
+
+}

@@ -1,0 +1,84 @@
+﻿@model AltMenu
+
+@{
+    ViewData["Title"] = "AltMenuEkle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row">
+              <div class="col-xl-12 stretch-card grid-margin">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="d-flex justify-content-between flex-wrap">
+                      <div>
+                        <div class="card-title mb-0">@ViewBag.SayfaAdi</div>
+                        <h3 class="font-weight-bold mb-0"> </h3>
+                      </div>
+                      <div>
+                        <div class="d-flex flex-wrap pt-2 justify-content-between sales-header-right">
+
+                        </div>
+                      </div>
+                    </div>
+                   
+            
+              
+ 
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="AltMenuEkle">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="AltMenuAdi" class="control-label"></label>
+                <input asp-for="AltMenuAdi" class="form-control" />
+                <span asp-validation-for="AltMenuAdi" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AltMenuYol" class="control-label"></label>
+                <input asp-for="AltMenuYol" class="form-control" />
+                <span asp-validation-for="AltMenuYol" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AltMenuSirasi" class="control-label"></label>
+                <input asp-for="AltMenuSirasi" class="form-control" />
+                <span asp-validation-for="AltMenuSirasi" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AltMenuIcon" class="control-label"></label>
+                <input asp-for="AltMenuIcon" class="form-control" />
+                <span asp-validation-for="AltMenuIcon" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MenuId" class="control-label">Menu Adi</label>
+                <input type="text"   value="@ViewBag.MenuAdi" class="form-control" readonly />
+                   <input type="hidden"  asp-for="MenuId" value="@ViewBag.MenuId" class="form-control" />
+                <span asp-validation-for="MenuId" class="text-danger"></span>
+            </div>
+           
+               
+                <input asp-for="Id" value="0" type="hidden" class="form-control" />
+          
+            <div class="form-group">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Durum" /> @Html.DisplayNameFor(model => model.Durum)
+                </label>
+            </div>
+
+     
+        
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Menü Listesine Dön</a>
+</div>
+
+                    </div>
+                    </div>
+                  </div>
+                </div>
+    

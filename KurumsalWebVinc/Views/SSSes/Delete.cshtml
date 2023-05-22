@@ -1,0 +1,51 @@
+﻿@model             SSS
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-xl-12 stretch-card grid-margin">
+        <div class="card">
+            <div class="card-header d-flex align-items-center">
+                <h5 class="mb-0">Sayfa Ayarları </h5>
+                <div class="ms-auto">
+                    <label class="form-check form-switch form-check-reverse">
+                        <input type="checkbox" class="form-check-input" checked>
+                        <span class="form-check-label"></span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="card-body pb-0">
+                <h3>Veriyi silmek istediğnizden eminmisiniz?</h3>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Soru)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Soru)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Cevap)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Cevap)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Durum)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Durum)
+        </dd>
+     
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Sil" class="btn btn-danger" /> |
+        <a asp-action="Index">İptal</a>
+    </form>
+</div></div></div></div>

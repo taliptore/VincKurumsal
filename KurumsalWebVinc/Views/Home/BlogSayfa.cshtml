@@ -1,0 +1,94 @@
+﻿@model List<Blog>
+@{
+    ViewData["Title"] = "Haberlerimiz";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- PAGETITLE
+   ================================================== -->
+
+
+<div class="site-breadcrumb" style="background: url(/motex/assets/img/breadcrumb/01.jpg)">
+    <div class="container">
+        <h2 class="breadcrumb-title">Bizden Haberiniz Olsun</h2>
+        <ul class="breadcrumb-menu">
+            <li><a href="~/Home">Anasayfa</a></li>
+            <li class="active">Haberler</li>
+        </ul>
+    </div>
+</div>
+
+
+<div class="blog-area py-120">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 mx-auto">
+                <div class="site-heading text-center">
+                    <span class="site-title-tagline"><i class="flaticon-drive"></i>Haberler</span>
+                    <h2 class="site-title">Bizden <span>Haberiniz </span> Olsun</h2>
+                    <div class="heading-divider"></div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+              @if (Model.Count>0)
+            {
+                foreach (var item in Model)
+                {
+                    <div class="col-md-6 col-lg-4">
+                        <div class="blog-item wow fadeInUp" data-wow-delay=".25s">
+                    <div class="blog-item-img">
+                                @if (item.BlogResim is not null)
+                                {
+                                    <img src="@item.BlogResim" alt="Thumb">
+                                }
+                                else
+                                {
+                                    <img src="/Motex/assets/img/blog/01.jpg" alt="Thumb">
+                                }
+                       
+                    </div>
+                    <div class="blog-item-info">
+                        <div class="blog-item-meta">
+                            <ul>
+                                        <li><a href="~/@item.SayfaUrl"><i class="far fa-user-circle"></i> </a></li>
+                                        <li><a href="~/@item.SayfaUrl"><i class="far fa-calendar-alt"></i>  @item.CreateDate.ToShortDateString()</a></li>
+                            </ul>
+                        </div>
+                        <h4 class="blog-title">
+                                    <a href="~/@item.SayfaUrl">@item.BlogBaslik</a>
+                        </h4>
+                                <a class="theme-btn" href="~/@item.SayfaUrl">Oku<i class="fas fa-arrow-right-long"></i></a>
+                    </div>
+                </div>
+            </div>
+            }
+            }
+      
+        </div>
+        <!-- pagination -->
+        <div class="pagination-area">
+            <div aria-label="Page navigation example">
+                <ul class="pagination">
+                    <li class="page-item">
+                        <a class="page-link" href="#" aria-label="Geri">
+                            <span aria-hidden="true"><i class="far fa-arrow-left"></i></span>
+                        </a>
+                    </li>
+                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item">
+                        <a class="page-link" href="#" aria-label="İleri">
+                            <span aria-hidden="true"><i class="far fa-arrow-right"></i></span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- pagination end -->
+    </div>
+</div>
+<!-- BLOG GRID
+================================================== -->
+ 

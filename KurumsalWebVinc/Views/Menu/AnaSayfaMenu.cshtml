@@ -1,0 +1,170 @@
+﻿@model IEnumerable<Menu>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-xl-12 stretch-card grid-margin">
+        <div class="card">
+            <div class="card-header d-flex align-items-center">
+                <h5 class="mb-0">@ViewBag.SayfaAdi </h5>
+                <div class="ms-auto">
+                    <div class="ms-auto">
+                        <a asp-action="Create"
+                           class="btn btn-primary">
+                            <i class="ph-plus">Yeni Kayıt</i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-body pb-0">
+                <div class="row">
+
+                    <table class="table media-library">
+                            <thead>
+                                <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Id)
+                                </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.MenuAdi)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.MenuYol)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.MenuSirasi)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.MenuIcon)
+                                    </th>
+
+                                    
+
+                                   
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Durum)
+                                    </th>
+                                   
+                                    <th>Alt Menü Sayısı</th>
+                                    <th>İşlemler</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+
+                                {
+                                    <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Id)
+                                    </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.MenuAdi)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.MenuYol)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.MenuSirasi)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.MenuIcon)
+                                        </td>
+
+                                     
+
+                                       
+                                        <td>
+                                            <input class="form-check-input" id="durumMenuchk" name="durumMenuchk" type="checkbox" value="@item.Id " checked="@item.Durum" />
+                                        </td>
+                                        
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.AltMenus.Count)
+                                        </td>
+                                        <td>
+                                        <a asp-action="AltMenuEkle" class="text-success mx-2" asp-route-id="@item.Id" data-bs-popup="tooltip" data-bs-original-title="Alt Menü Ekle"><i class="ph-plus"></i></a>
+                                        <a asp-action="Edit" class="text-primary  mx-2" asp-route-id="@item.Id" data-bs-popup="tooltip" data-bs-original-title="Düzünle"> <i class="ph-pen"></i></a>
+                                        @*<a asp-action="Details" class="text-teal  mx-2" asp-route-id="@item.Id" data-bs-popup="tooltip" data-bs-original-title="İncele"> <i class="ph-eye"></i></a>*@
+                                        <a asp-action="Delete" class="text-danger mx-2" asp-route-id="@item.Id" data-bs-popup="tooltip" data-bs-original-title="Sil"><i class="ph-trash"></i></a>
+
+                                      
+                                        </td>
+                                    </tr>
+                                    if (item.AltMenus.Where(x => x.Durum == true).Count() > 0)
+                                    {
+
+                                        <tr>
+                                            <td colspan="11">
+                                                <div class=".collapse.show" id="collapseExample">
+                                                    <div class="card card-body">
+                                                        <table>
+                                                            <tr>
+                                                                <td>Alt Menu Adı</td>
+                                                                <td>Alt Menu Yol</td>
+                                                                <td>Alt Menu İcon</td>
+                                                                <td>Alt Menu Durum</td>
+                                                                <td>İşlemler</td>
+
+                                                            </tr>
+                                                            @foreach (var altmenu in item.AltMenus)
+                                                            {
+
+                                                                <tr>
+                                                                    <td>@altmenu.AltMenuAdi</td>
+                                                                    <td>@altmenu.AltMenuYol</td>
+                                                                    <td>@altmenu.AltMenuIcon</td>
+                                                                    <td>
+                                                                        <input class="form-check-input" id="durumAltMenuchk" name="durumAltMenuchk" type="checkbox" value="@altmenu.Id " checked="@altmenu.Durum" />
+                                                                    </td>
+                                                                    <td>
+
+                                                                    <a asp-action="AltMenuEdit" class="text-primary  mx-2" asp-route-id="@altmenu.Id" data-bs-popup="tooltip" data-bs-original-title="Düzünle"> <i class="ph-pen"></i></a>
+                                                                    @*<a asp-action="Details" class="text-teal  mx-2" asp-route-id="@item.Id" data-bs-popup="tooltip" data-bs-original-title="İncele"> <i class="ph-eye"></i></a>*@
+                                                                    <a asp-action="AltMenuDelete" class="text-danger mx-2" asp-route-id="@altmenu.Id" data-bs-popup="tooltip" data-bs-original-title="Sil"><i class="ph-trash"></i></a>
+
+                                                                      
+                                                                    </td>
+                                                                </tr>
+
+                                                            }
+                                                        </table>
+                                                    </div>
+                                                </div>
+
+
+                                            </td>
+                                        </tr>
+
+                                    }
+                                    else
+                                    {
+
+
+
+                                    }
+
+                                }
+                            </tbody>
+
+                        </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+@section Scripts {
+             <script src="~/assets/js/jquery/jquery.min.js"></script>
+		<script src="~/assets/js/vendor/tables/datatables/datatables.min.js"></script>
+		<script src="~/assets/js/vendor/media/glightbox.min.js"></script>
+
+	@*	<script src="~/assets/js/app.js"></script>*@
+	@*<script src="~/assets/demo/pages/gallery_library.js"></script>*@
+    <script src="~/js/OzelJs/DurumAktifPasifEtme.js"></script>
+ }

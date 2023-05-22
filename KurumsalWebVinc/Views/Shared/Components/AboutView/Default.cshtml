@@ -1,0 +1,92 @@
+﻿@model Hakkimizda
+@if (Model is not null)
+{
+
+
+ 
+
+    <div class="about-area py-120">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <div class="about-left wow fadeInLeft" data-wow-delay=".25s">
+                        <div class="about-img">
+                            @if (Model.Resim is not null)
+                            {
+                                <img src="@Model.Resim" alt="">
+                            }else
+                            {
+                                <img src="/motex/assets/img/about/01.png" alt="">
+                            }
+                           
+                        </div>
+                        <div class="about-experience">
+                            <div class="about-experience-icon">
+                                <i class="flaticon-car"></i>
+                            </div>
+                            <b>10 Yıllık Kaliteli Hizmet</b>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="about-right wow fadeInRight" data-wow-delay=".25s">
+                        <div class="site-heading mb-3">
+                            <span class="site-title-tagline justify-content-start">
+                                <i class="flaticon-drive"></i> Hakkımızda
+                            </span>
+                           
+                        </div>
+                        <p class="about-text">
+                            @Html.Raw( Model.Icerik)
+                        </p>
+                        
+                        <a href="~/home/hakkimizda" class="theme-btn mt-4">
+                            Daha Fazlasını Oku<i class="fas fa-arrow-right-long"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+   
+}else
+{
+
+    <div class="about-area py-120">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <div class="about-left wow fadeInLeft" data-wow-delay=".25s">
+                        <div class="about-img">
+                            <img src="/motex/assets/img/about/01.png" alt="">
+                        </div>
+                        <div class="about-experience">
+                            <div class="about-experience-icon">
+                                <i class="flaticon-car"></i>
+                            </div>
+                            <b>10 Yıllık Kaliteli Hizmet</b>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="about-right wow fadeInRight" data-wow-delay=".25s">
+                        <div class="site-heading mb-3">
+                            <span class="site-title-tagline justify-content-start">
+                                <i class="flaticon-drive"></i> Hakkımızda
+                            </span>
+
+                        </div>
+                        <p class="about-text">
+                            Yönetim panalinden yükleyiniz.
+                        </p>
+
+                        <a href="~/home/hakkimizda" class="theme-btn mt-4">
+                            Daha Fazlasını Oku<i class="fas fa-arrow-right-long"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}

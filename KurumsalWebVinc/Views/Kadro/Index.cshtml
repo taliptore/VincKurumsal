@@ -1,0 +1,126 @@
+﻿@model IEnumerable<Kadromuz>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-xl-12 stretch-card grid-margin">
+        <div class="card">
+            <div class="card-header d-flex align-items-center">
+                <h5 class="mb-0">@ViewBag.SayfaAdi </h5>
+                <div class="ms-auto">
+                    <div class="ms-auto">
+                        <a asp-action="Create"
+                           class="btn btn-primary">
+                            <i class="ph-plus">Yeni Kayıt</i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-body pb-0">
+                <div class="row">
+                    @{
+    if (Model is not null)
+                        {
+                            <table class="table  media-library">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.Id)
+                                        </th>
+                                        <th>
+
+                                          Resim
+                                        </th>
+                                        <th>
+                                       
+                                            @Html.DisplayNameFor(model => model.Isim)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.Uzmanlik)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.Aciklama)
+                                        </th>
+                                     
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.Mail)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.SayfaUrl)
+                                        </th>
+                                      
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.Durum)
+                                        </th>
+
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Id)
+                                            </td>
+                                            <td>
+										     <a href="@item.Resim" data-bs-popup="lightbox">
+                                                    <img src="@item.Resim" alt="" class="img-preview rounded">
+										</a>
+									</td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Isim)
+                                               
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Uzmanlik)
+                                            </td>
+                                            <td>
+                                                @Html.Raw(item.Aciklama.Substring(0,item.Aciklama.Length>30?30:item.Aciklama.Length))
+                                               
+                                                
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Mail)
+                                            </td>
+                                           
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.SayfaUrl)
+                                            </td>
+                                            
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Durum)
+                                            </td>
+
+                                            <td>
+                                                <a asp-action="Edit" class="text-primary " asp-route-id="@item.Id" data-bs-popup="tooltip" data-bs-original-title="Düzünle"> <i class="ph-pen"></i></a>
+                                                @*<a asp-action="Details" class="text-teal  mx-2" asp-route-id="@item.Id" data-bs-popup="tooltip" data-bs-original-title="İncele"> <i class="ph-eye"></i></a>*@
+                                                <a asp-action="Delete" class="text-danger " asp-route-id="@item.Id" data-bs-popup="tooltip" data-bs-original-title="Sil"><i class="ph-trash"></i></a>
+
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        }else
+                        {
+                            Html.Raw("  Listelencek Kayıt Bulunmadı.");
+                        }
+}                    
+
+</div></div></div></div></div>
+@section Scripts {
+
+    <!-- Theme JS files -->
+     <script src="~/assets/js/vendor/tables/datatables/datatables.min.js"></script>
+    <script src="~/assets/js/vendor/media/glightbox.min.js"></script>
+
+    @*<script src="~/assets/js/app.js"></script>*@
+    <script src="~/assets/demo/pages/gallery_library.js"></script>
+
+
+}

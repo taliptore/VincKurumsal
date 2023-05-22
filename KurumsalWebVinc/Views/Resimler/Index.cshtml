@@ -1,0 +1,106 @@
+﻿@model IEnumerable<Resimler>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+ 
+
+
+
+ 
+		  <div class="content">
+
+					<!-- Media library -->
+					<div class="card">
+						<div class="card-header d-flex align-items-center">
+							<h6 class="mb-0">Resim Listesi</h6>
+							<div class="ms-auto">
+				                		<a asp-action="Create"
+										class="btn btn-primary">
+				                			<i class="ph-plus">Yeni Kayıt</i>
+				                		</a>
+				                	</div>
+						</div>
+						<div class="card-body">
+
+						<table class="table media-library">
+							<thead>
+								<tr>
+
+					<th>ID</th>
+									<th>Resim</th>
+									<th>Adı</th>
+									<th>Resim Yolu</th>
+									<th></th>
+									<th>Açıklama</th>
+									<th class="text-center">İşlemler</th>
+								</tr>
+							</thead>
+							<tbody>
+								@foreach (var item in Model) {
+								<tr>
+									<td>
+										 @item.Id
+									</td>
+									<td>
+										<a href="@item.Path" data-bs-popup="lightbox">
+								    <img src="@item.Path" alt="" class="img-preview rounded">
+										</a>
+									</td>
+									<td>@item.Baslik</td>
+									<td>
+								<a href="@item.Path" data-bs-popup="lightbox">
+									@item.Path
+								</a>
+										</td>
+									<td></td>
+									<td>
+										 @item.Aciklama
+									</td>
+									<td class="text-center">
+										<div class="d-inline-flex">
+											<div class="dropdown">
+												<a href="#" class="text-body" data-bs-toggle="dropdown">
+													<i class="ph-list"></i>
+												</a>
+
+												<div class="dropdown-menu dropdown-menu-end">
+													<a asp-action="Edit" asp-route-id="@item.Id"  class="dropdown-item">
+														<i class="ph-pencil me-2"></i>
+														Düzenle
+													</a>
+													
+													<a asp-action="Delete" asp-route-id="@item.Id" class="dropdown-item">
+														<i class="ph-eye-slash me-2"></i>
+														Sil
+													</a>
+												 
+												</div>
+											</div>
+										</div>
+									</td>
+								</tr>
+								}
+
+							</tbody>
+						</table>
+						</div> 
+					</div>
+					<!-- /media library -->
+
+				</div>
+			 
+@section Scripts {
+
+		<!-- Theme JS files -->
+		<script src="~/assets/js/jquery/jquery.min.js"></script>
+		<script src="~/assets/js/vendor/tables/datatables/datatables.min.js"></script>
+		<script src="~/assets/js/vendor/media/glightbox.min.js"></script>
+
+		@*<script src="~/assets/js/app.js"></script>*@
+	<script src="~/assets/demo/pages/gallery_library.js"></script>
+
+
+}

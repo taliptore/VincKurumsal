@@ -1,0 +1,78 @@
+﻿@model List<Servisler>
+@{
+    if (Model.Count > 0)
+    {
+
+        <div class="site-breadcrumb" style="background: url(/motex/assets/img/breadcrumb/01.jpg)">
+            <div class="container">
+                <h2 class="breadcrumb-title">Hizmetler</h2>
+                <ul class="breadcrumb-menu">
+                    <li><a href="~/home">Anasayfa</a></li>
+                    <li class="active">Hizmetlerimiz</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="service-area py-120">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 mx-auto">
+                        <div class="site-heading text-center">
+                            <span class="site-title-tagline">Hizmetlerimiz</span>
+                            <h2 class="site-title">Size  <span>Nasıl </span> Daha <span>Güzel  </span> Hizmet Verebiliriz. </h2>
+                            <div class="heading-divider"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    @foreach (var item in Model)
+                    {
+                    <div class="col-md-6 col-lg-4">
+                        <div class="service-item">
+                            <div class="service-img">
+                                    @if (item.ServisResim is not null)
+                                    {
+                                         
+                                        <img src="@item.ServisResim" alt="">
+                                    }
+                                    else
+                                    {
+                                        <img src="/motex/assets/img/service/01.jpg" alt="">
+                                    }
+                               
+                            </div>
+                            <div class="service-icon">
+                                <i class="flaticon-screwdriver"></i>
+                            </div>
+                            <div class="service-content">
+                                <h3 class="service-title">
+                                        <a href="~/@item.ServisUrl">@item.ServisAdi</a>
+                                </h3>
+                                <p class="service-text">
+
+                                        @Html.Raw(item.ServisAciklama.ToString().Substring(0,item.ServisAciklama.ToString().Length>90?90:item.ServisAciklama.ToString().Length))
+                                        @if (item.ServisAciklama.ToString().Length > 90)
+                                            @Html.Raw("...")
+
+
+                                </p>
+                                <div class="service-arrow">
+                                        <a href="~/@item.ServisUrl" class="theme-btn">Devamını Oku<i class="fas fa-arrow-right-long"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    }
+                 
+                </div>
+            </div>
+        </div>
+
+
+    }
+
+    else
+    {
+        <p>Yönetici panelinden hizmetleri ekleyiniz.</p>
+    }
+}

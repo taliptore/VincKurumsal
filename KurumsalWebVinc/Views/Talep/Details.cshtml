@@ -1,0 +1,135 @@
+﻿@model             TalepFormu
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-xl-12 stretch-card grid-margin">
+        <div class="card">
+            <div class="card-header d-flex align-items-center">
+                <h5 class="mb-0">Talep İncele </h5>
+                <div class="ms-auto">
+                    <label class="form-check form-switch form-check-reverse">
+                        <input type="checkbox" class="form-check-input" checked>
+                        <span class="form-check-label"></span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="card-body pb-0">
+                <div class="row">
+
+                    <div class="row">
+                         @if (ViewBag.TalepMadde is not null)
+                        {
+                            @if (((IEnumerable<ServisTalep>)ViewBag.TalepMadde).ToList().Count() > 0)
+                            {
+                                var id = ((IEnumerable<ServisTalep>)ViewBag.TalepMadde).ToList().Where(x => x.ServislerId == Model.Id).FirstOrDefault().Servisler.ServisAdi.ToString();
+                                <h4>@id </h4> 
+                            }
+                        }
+                      
+                        <div class="col-md-4">
+    <dl class="row">
+        <dt class = "col-sm-4">
+            @Html.DisplayNameFor(model => model.Ad)
+        </dt>
+        <dd class = "col-sm-8">
+            @Html.DisplayFor(model => model.Ad)
+        </dd>
+        <dt class = "col-sm-4">
+            @Html.DisplayNameFor(model => model.Soyad)
+        </dt>
+        <dd class = "col-sm-8">
+            @Html.DisplayFor(model => model.Soyad)
+        </dd>
+        <dt class = "col-sm-4">
+            @Html.DisplayNameFor(model => model.Mail)
+        </dt>
+        <dd class = "col-sm-8">
+            @Html.DisplayFor(model => model.Mail)
+        </dd>
+        <dt class = "col-sm-4">
+            @Html.DisplayNameFor(model => model.Adres)
+        </dt>
+        <dd class = "col-sm-8">
+            @Html.DisplayFor(model => model.Adres)
+        </dd>
+        <dt class = "col-sm-4">
+            @Html.DisplayNameFor(model => model.iletisimNo)
+        </dt>
+        <dd class = "col-sm-8">
+            @Html.DisplayFor(model => model.iletisimNo)
+        </dd>
+             @if (ViewData["BulSehir"] is not null)
+                                {
+
+
+                                    <dt class="col-sm-4">
+                                        Hizmetin Alınacagı İl
+                                    </dt>
+                                    <dd class="col-sm-8">
+                                        @ViewData["BulSehir"].ToString()
+                                    </dd>
+
+                                }
+                                @if (ViewData["GitSehir"] is not null)
+                                {
+
+
+                                    <dt class="col-sm-4">
+                                        Hizmetin Gideceği İl
+                                    </dt>
+                                    <dd class="col-sm-8">
+                                        @ViewData["GitSehir"].ToString()
+                                    </dd>
+
+                                }
+                                <dt class = "col-sm-4">
+            @Html.DisplayNameFor(model => model.Mesaj)
+        </dt>
+        <dd class = "col-sm-8">
+            @Html.DisplayFor(model => model.Mesaj)
+        </dd>
+       
+        
+        <dt class = "col-sm-4">
+            Talep Durumu
+        </dt>
+        <dd class = "col-sm-8">
+                                    @if (Model.Durum)
+                                    {
+                                        <div class="alert alert-success" role="alert">
+                                            İşlem Yapıldı.
+                                        </div>
+
+                                    }
+                                    else
+                                    {
+                                      
+                                            <div class="alert alert-danger" role="alert">
+                                                Beklemede
+                                            </div>
+                                       
+                                    }
+        </dd>
+    
+    </dl>
+                        </div>
+                        <div class="col-md-8">
+                            <h4>Mesaj İçeriği</h4>
+                            @Html.DisplayFor(model => model.Mesaj)
+</div>
+</div>
+<div>
+                        <form asp-action="Details">
+                            <input type="hidden" asp-for="Id" />
+                            <input type="hidden"  asp-for="Durum" />
+                            <input type="submit" value="Talebe İşlem Yapıldı. Olarak  Kaydet" class="btn btn-success" /> |
+                            <a asp-action="Index">Talep sayfasına Dön</a>
+                        </form>
+ 
+</div>
+</div></div></div></div></div>

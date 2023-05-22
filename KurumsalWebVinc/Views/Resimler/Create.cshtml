@@ -1,0 +1,106 @@
+﻿@model             ResimlerDto
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="row">
+    <div class="col-xl-12 stretch-card grid-margin">
+        <div class="card">
+    <div class="card-header d-flex align-items-center">
+        <h5 class="mb-0"> Resim Ekle </h5>
+        <div class="ms-auto">
+            <label class="form-check form-switch form-check-reverse">
+                <input type="checkbox" class="form-check-input" checked>
+                <span class="form-check-label"></span>
+            </label>
+        </div>
+    </div>
+    <div class="card-body pb-0">
+        <form asp-action="Create" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="row">
+                        <div class="col-md-8">
+            <div class="form-group">
+                <label asp-for="Baslik" class="control-label"></label>
+                <input asp-for="Baslik" class="form-control" />
+                <span asp-validation-for="Baslik" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Aciklama" class="control-label"></label>
+                <input asp-for="Aciklama" class="form-control" />
+                <span asp-validation-for="Aciklama" class="text-danger"></span>
+            </div>
+                            <div class="form-group form-check">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" asp-for="Durum" /> @Html.DisplayNameFor(model => model.Durum)
+                                </label>
+                            </div>
+
+                            <div class="form-group">
+                                <input type="submit" value="Kaydet" class="btn btn-primary" />
+                            </div>
+              </div>
+              
+             
+
+                 
+                    <input asp-for="Path"  type="hidden"    class="form-control">
+                     <input asp-for="FileName" type="hidden" class="form-control">
+				 
+
+              
+           @* <div class="form-group">
+                <label asp-for="Resim" class="control-label"></label>
+                <div class="input-group">
+                    <input asp-for="Resim" type="file" class="form-control">
+                    <span class="input-group-text">.pdf</span>
+                    <span class="input-group-text">.png</span>
+                </div>
+                     
+                    
+               
+            </div>*@
+           
+
+
+                <!-- Using data attributes -->
+                        <div class="col-md-4">
+					<div class="card">
+						<div class="card-header">
+							<h5 class="mb-0">Resim Yükle</h5>
+						</div>
+
+						<div class="card-body">
+							<p class="mb-3"> Not:</p>
+
+							<p class="fw-semibold">Ön İzleme</p>
+                    <input type="file" multiple="multiple" asp-for="Resimler" class="file-input" data-show-upload="false" data-show-caption="true" data-show-preview="true">
+						</div>
+                         <span asp-validation-for="Resimler" class="text-danger"></span>
+					</div>
+					<!-- /using data attributes -->
+                    </div>
+
+            
+        </form>
+    </div>
+</div>
+</div>
+</div>
+
+
+
+@section Scripts {
+    
+        <script src="~/assets/js/jquery/jquery.min.js"></script>
+	<script src="~/assets/js/vendor/uploaders/fileinput/fileinput.min.js"></script>
+	<script src="~/assets/js/vendor/uploaders/fileinput/plugins/sortable.min.js"></script>
+
+	<script src="~/assets/js/app.js"></script>
+	<script src="~/assets/demo/pages/uploader_bootstrap.js"></script>
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+}

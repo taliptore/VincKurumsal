@@ -1,0 +1,120 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+ 
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+     
+    <Nullable>disable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>27078089-250c-4190-b889-f72685148e59</UserSecretsId>
+    <EnvironmentName>Development</EnvironmentName>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+  <ServerGarbageCollection>false</ServerGarbageCollection>
+  <PlatformTarget>AnyCPU</PlatformTarget>
+  
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Models\Configurations\**" />
+    <Compile Remove="wwwroot\images\**" />
+    <Content Remove="Models\Configurations\**" />
+    <Content Remove="wwwroot\images\**" />
+    <EmbeddedResource Remove="Models\Configurations\**" />
+    <EmbeddedResource Remove="wwwroot\images\**" />
+    <None Remove="Models\Configurations\**" />
+    <None Remove="wwwroot\images\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Controllers\ax40lgip.kq0~" />
+    <None Remove="Views\Blog\Create.cshtml~RF1006c8.TMP" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="8.0.0" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.0" />
+    <PackageReference Include="FluentValidation.AspNetCore" Version="11.2.2" />
+    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.5.1" />
+    <PackageReference Include="MailKit" Version="4.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.10" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="6.0.10" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.10">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="6.0.10" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.10" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.10">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.18.1" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.13" />
+    <PackageReference Include="MimeKit" Version="4.0.0" />
+    <PackageReference Include="Quill.Delta" Version="1.0.7" />
+    <PackageReference Include="Serilog.AspNetCore" Version="6.1.0" />
+    <PackageReference Include="System.Drawing.Common" Version="6.0.0" />
+    <PackageReference Include="TopShelf.ServiceInstaller" Version="4.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Pages\" />
+    <Folder Include="wwwroot\css\" />
+    <Folder Include="wwwroot\lib\bootstrap\" />
+    <Folder Include="wwwroot\lib\bootstrap\dist\css\" />
+    <Folder Include="wwwroot\lib\bootstrap\dist\js\" />
+    <Folder Include="wwwroot\lib\jquery-validation\" />
+    <Folder Include="wwwroot\lib\jquery-validation\dist\" />
+    <Folder Include="wwwroot\logs\" />
+    <Folder Include="wwwroot\upload\images\" />
+    <Folder Include="wwwroot\upload\pdf\" />
+    <Folder Include="wwwroot\upload\pdf\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\gallery\default\ug-theme-default.js" />
+    <None Include="wwwroot\gallery\js\jquery-11.0.min.js" />
+    <None Include="wwwroot\gallery\js\unitegallery.js" />
+    <None Include="wwwroot\gallery\js\unitegallery.min.js" />
+    <None Include="wwwroot\motex\assets\fonts\fa-brands-400.woff2" />
+    <None Include="wwwroot\motex\assets\fonts\fa-duotone-900.woff2" />
+    <None Include="wwwroot\motex\assets\fonts\fa-light-300.woff2" />
+    <None Include="wwwroot\motex\assets\fonts\fa-regular-400.woff2" />
+    <None Include="wwwroot\motex\assets\fonts\fa-sharp-solid-900.woff2" />
+    <None Include="wwwroot\motex\assets\fonts\fa-solid-900.woff2" />
+    <None Include="wwwroot\motex\assets\fonts\fa-thin-100.woff2" />
+    <None Include="wwwroot\motex\assets\fonts\fa-v4compatibility.woff2" />
+    <None Include="wwwroot\motex\assets\fonts\flaticon.svg" />
+    <None Include="wwwroot\motex\assets\fonts\flaticon.woff2" />
+    <None Include="wwwroot\motex\assets\js\bootstrap.bundle.min.js" />
+    <None Include="wwwroot\motex\assets\js\contact-form.js" />
+    <None Include="wwwroot\motex\assets\js\countdown.min.js" />
+    <None Include="wwwroot\motex\assets\js\counter-up.js" />
+    <None Include="wwwroot\motex\assets\js\flex-slider.js" />
+    <None Include="wwwroot\motex\assets\js\imagesloaded.pkgd.min.js" />
+    <None Include="wwwroot\motex\assets\js\isotope.pkgd.min.js" />
+    <None Include="wwwroot\motex\assets\js\jquery-3.6.0.min.js" />
+    <None Include="wwwroot\motex\assets\js\jquery-ui.min.js" />
+    <None Include="wwwroot\motex\assets\js\jquery.appear.min.js" />
+    <None Include="wwwroot\motex\assets\js\jquery.easing.min.js" />
+    <None Include="wwwroot\motex\assets\js\jquery.magnific-popup.min.js" />
+    <None Include="wwwroot\motex\assets\js\jquery.nice-select.min.js" />
+    <None Include="wwwroot\motex\assets\js\main.js" />
+    <None Include="wwwroot\motex\assets\js\masonry.pkgd.min.js" />
+    <None Include="wwwroot\motex\assets\js\modernizr.min.js" />
+    <None Include="wwwroot\motex\assets\js\owl.carousel.min.js" />
+    <None Include="wwwroot\motex\assets\js\wow.min.js" />
+    <None Include="wwwroot\motex\assets\php\contact.php" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="wwwroot\assets\css\ltr\all.min.css">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\assets\js\app.js">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
+</Project>

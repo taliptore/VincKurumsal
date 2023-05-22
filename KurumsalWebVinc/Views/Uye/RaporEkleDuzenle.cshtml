@@ -1,0 +1,118 @@
+﻿@model 			AracRapor
+
+@{
+    ViewData["Title"] = "RaporEkleDuzenle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-xl-12 stretch-card grid-margin">
+        <div class="card">
+            <div class="card-header d-flex align-items-center">
+                <h5 class="mb-0">Sayfa Ayarları </h5>
+                <div class="ms-auto">
+                    <label class="form-check form-switch form-check-reverse">
+                        <input type="checkbox" class="form-check-input" checked>
+                        <span class="form-check-label"></span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="card-body pb-0">
+                <form asp-action="RaporEkleDuzenle" enctype="multipart/form-data">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <label asp-for="Baslik" class="control-label"></label>
+                                <input asp-for="Baslik" class="form-control" />
+                                <span asp-validation-for="Baslik" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Aciklama" class="control-label"></label>
+                                <input asp-for="Aciklama" class="form-control" />
+                                <span asp-validation-for="Aciklama" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="RaporuDuzunleyenFirma" class="control-label"></label>
+                                <input asp-for="RaporuDuzunleyenFirma" class="form-control" />
+                                <span asp-validation-for="RaporuDuzunleyenFirma" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="RaporVerilisTarihi" class="control-label"></label>
+                                <input type="date" asp-for="RaporVerilisTarihi" class="form-control" asp-items="ViewBag.AracBilgisiId"></input>
+                                <span asp-validation-for="RaporVerilisTarihi" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <div class="checkbox">
+                                    <label>
+                                        <input asp-for="Durum" /> @Html.DisplayNameFor(model => model.Durum)
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card">
+
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h5 class="mb-0">Doysa Yükle</h5>
+                                    </div>
+                                    @if (Model is not null)
+                                    {
+                                        if (Model.RaporYolu is not null)
+                                        {
+                                            <div class="card-header">
+                                                <a href="@Model.RaporYolu" target="_blank">Raporu görmek için Tıklayınız</a>
+                                            </div>
+                                        }
+
+                                    }
+
+
+                                    <div class="card-body">
+                                        <p class="mb-3"> Not:</p>
+
+                                        <p class="fw-semibold">Ön İzleme</p>
+                                        <input type="file" name="pdffile" class="file-input" data-show-upload="false" data-show-caption="true" data-show-preview="true">
+                                    </div>
+
+                                </div>
+                                @if (Model is null)
+                                {
+                                    <input type="hidden" asp-for="Id" value="0" />
+                                }
+                                else
+                                {
+                                    <input type="hidden" asp-for="Id" value="@Model.Id" />
+                                }
+                           
+                                <input type="hidden" asp-for="AracBilgisiId" />
+
+
+                                <div class="form-group">
+                                    <input type="submit" value="Kaydet" class="btn btn-default" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Geri</a>
+</div>
+
+@section Scripts {
+    <script src="~/assets/js/jquery/jquery.min.js"></script>
+    <script src="~/assets/js/vendor/uploaders/fileinput/fileinput.min.js"></script>
+    <script src="~/assets/js/vendor/uploaders/fileinput/plugins/sortable.min.js"></script>
+    <script src="~/assets/demo/pages/uploader_bootstrap.js"></script>
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

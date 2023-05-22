@@ -1,0 +1,501 @@
+﻿@model 			AracBilgisi
+
+@{
+    ViewData["Title"] = "delete";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="card">
+    <div class="card-header">
+        <h4 class="mb-0">İlanı Silmek istediğinize emin misiniz? ilana ait bütün veriler silinecektir.</h4>
+    </div>
+    <div class="card-body">
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Sil" class="btn btn-danger" /> |
+        <a asp-action="Index">İptal</a>
+    </form>
+
+    </div>
+    </div>
+
+
+
+
+
+<div class="card">
+    <div class="card-header">
+        <h6 class="mb-0">Araç Bilgisi Detay</h6>
+    </div>
+    <div class="card">
+
+
+        <div class="card-body">
+
+            <div class="fw-bold border-bottom pb-2 mb-3">İlan Resimleri</div>
+
+
+
+            <div class="content">
+
+                <!-- Image grid -->
+
+
+                <div class="row">
+
+                    @if (Model.AracResims is not null)
+                    {
+                        var say = 0;
+                        @foreach (var item in Model.AracResims)
+                        {
+                            say++;
+
+                            <div class="col-sm-6 col-xl-3" id="resim_@item.Id">
+                                <div class="card">
+                                    <div class="card-img-actions mx-1 mt-1">
+                                        <img class="card-img img-fluid" src="@item.ResimYolu" alt="">
+                                        <div class="card-img-actions-overlay card-img">
+                                            <a href="@item.ResimYolu" class="btn btn-outline-white btn-icon rounded-pill" data-bs-popup="lightbox" data-gallery="gallery1">
+                                                <i class="ph-arrows-out"></i>
+                                            </a>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="card-body">
+                                        <div class="d-flex align-items-start flex-nowrap">
+
+
+                                            <div class="d-inline-flex ms-auto">
+                                                <button type="button" name="resimsil" class="btn" value="@item.Id"><i class="ph-trash"></i></button>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+
+
+
+                </div>
+
+
+                <!-- /image grid -->
+
+
+
+            </div>
+
+
+
+        </div>
+
+
+
+    </div>
+
+    <div class="card-body">
+        <div class="card">
+            <div class="card-header">
+                <h6>Katagori Detayı</h6>
+            </div>
+            <div class="card-body">
+
+                <fieldset>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="mb-3">
+                                <label class="form-label">Marka:</label>
+                                <select asp-for="AracMarkaKOD" asp-items="ViewBag.AracMarkaId"
+                                        class="form-control select select2-hidden-accessible " disabled aria-readonly="true"
+                                        data-select2-id="AracMarkaKOD" tabindex="-1" aria-hidden="true">
+                                </select>
+                                <span asp-validation-for="AracMarka.Id" class="text-danger"></span>
+                                @*<select asp-for="AracMarkaKOD" class="form-select" asp-items="ViewBag.AracMarkaId"></select>*@
+
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="mb-3">
+                                <label class="form-label">Yıl:</label>
+                                <select asp-for="Yil" asp-items="ViewBag.Yil" disabled
+                                        class="form-control select select2-hidden-accessible"
+                                        data-select2-id="Yil" tabindex="-1" aria-hidden="true">
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="mb-3">
+                                <label class="form-label">Model:</label>
+                                <select asp-for="AracModelKOD" asp-items="ViewBag.AracModelId" disabled
+                                        class="form-control select select2-hidden-accessible"
+                                        data-select2-id="AracModelKOD" tabindex="-1" aria-hidden="true">
+                                </select>
+
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="mb-3">
+                                <label class="form-label">Yakıt Tipi:</label>
+                                <select asp-for="YakitTipiId" class="form-select" disabled asp-items="ViewBag.YakitTipiId"></select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="mb-3">
+                                <label class="form-label">Kasa Tipi:</label>
+                                <select asp-for="KasaTipiId" class="form-select" disabled asp-items="ViewBag.KasaTipiId"></select>
+
+
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="mb-3">
+                                <label class="form-label">Vites Tipi:</label>
+                                <select asp-for="VitesTipId" class="form-select" disabled asp-items="ViewBag.VitesTipId"></select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="mb-3">
+                                <label class="form-label">Araç Rengi:</label>
+                                <select asp-for="AracRenkId" class="form-select" disabled asp-items="ViewBag.AracRenkId"></select>
+
+
+
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="mb-3">
+                                <label class="form-label">Araç Durumu:</label>
+                                <select asp-for="AracDurumId" class="form-select" disabled asp-items="ViewBag.AracDurumId"></select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="mb-3">
+                                <label class="form-label">Kimden:</label>
+                                <select asp-for="KimdenId" class="form-select" disabled asp-items="ViewBag.KimdenId"></select>
+
+
+
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+
+
+                            <div class="mb-3">
+                                <label class="form-label">Detay Bilgi </label>
+                                <div class="form-group">
+                                    Garanti Varmı? <input class="form" disabled asp-for="Garanti" />
+                                    Ağır Hasar Kaydı Var Mı?<input class="form" disabled asp-for="AgirHararKayitliMi" />
+                                    Takas Olarak Kullanmayı Düşünüyor Musunuz?<input disabled class="form" asp-for="Takasli" />
+                                </div>
+
+                            </div>
+
+
+
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                <h6>İlan Açıklma</h6>
+            </div>
+            <div class="card-body">
+
+                <fieldset>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="mb-3">
+                                <label class="form-label">Başlık: <span class="text-danger">*</span></label>
+                                <input type="text" asp-for="Baslik" disabled placeholder="Başlık Yazınız" class="form-control required">
+
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="mb-3">
+                                <label class="form-label">Açiklama: <span class="text-danger">*</span></label>
+                                <textarea type="text" rows="5" disabled asp-for="Aciklama" placeholder="Açıklama Yazınız." class="form-control required"></textarea>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="mb-3">
+                                <label class="form-label">Hasar Kaydı Varsa Doldurunuz: </label>
+                                <textarea type="text" rows="5" disabled asp-for="HasarKaydiAciklama" placeholder="Hasar Kaydı Varsa Doldurunuz Yoksa Boş Bırakabilirsiniz." class="form-control"></textarea>
+
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="mb-3">
+                                <label class="form-label">Araç Değişen Bilgileri Varsa Doldurunuz: </label>
+                                <textarea type="text" rows="5" disabled asp-for="DegisenAciklama" placeholder=" Araç Değişen Bilgileri Varsa Doldurunuz Yoksa Boş Bırakabilirsiniz." class="form-control "></textarea>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="mb-3">
+                                <label class="form-label">Araç Boya Durmunu Yazınız: </label>
+                                <textarea type="text" rows="5" disabled asp-for="BoyaAciklama" placeholder="Araç Boya Durmunu Yazınız Yoksa Boş Bırakabilirsiniz." class="form-control"></textarea>
+
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="mb-3">
+                                <label class="form-label">Araç Değişen Bilgileri Varsa Doldurunuz: </label>
+                                <textarea type="text" rows="5" disabled asp-for="DegisenAciklama" placeholder="Araç Değişen Bilgileri Varsa Doldurunuz Yoksa Boş Bırakabilirsiniz." class="form-control "></textarea>
+
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                <h6>İlan Detay</h6>
+            </div>
+            <div class="card-body">
+
+                <fieldset>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="mb-3">
+                                <label class="form-label">Araç KiloMetresi: <span class="text-danger">*</span></label>
+                                <input type="number" asp-for="KM" disabled placeholder="KM Giriniz" class="form-control required">
+
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="mb-3">
+                                <label class="form-label">Fiyat: <span class="text-danger">*</span></label>
+                                <input type="number" asp-for="Fiyat" disabled placeholder="Fiyat Giriniz" class="form-control required">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="mb-3">
+                                <label class="form-label">İlan İletişim Numarası: <span class="text-danger">*</span></label>
+                                <input type="tel" asp-for="ilanCep" disabled placeholder="İletişim Numarası Griniz" class="form-control required">
+
+                            </div>
+                        </div>
+
+                        @*	<div class="col-lg-6">
+                        <div class="mb-3">
+                        <label class="form-label">Fiyat: <span class="text-danger">*</span></label>
+                        <input type="text" asp-for="Fiyat" placeholder="Fiyat Giriniz" class="form-control required">
+                        </div>
+                        </div>*@
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="mb-3">
+                                <label class="form-label">İl: <span class="text-danger">*</span></label>
+                                <select asp-for="SehirilBilgisiilKOD" disabled class="form-control" asp-items="ViewBag.SehirilBilgisiId"></select>
+
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="mb-3">
+                                <label class="form-label">İlçe: <span class="text-danger">*</span></label>
+                                <select asp-for="SehirilceBilgisiilceKOD" disabled class="form-control" asp-items="ViewBag.SehirilceBilgisiId"></select>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </fieldset>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h6>İlanı Yayınla</h6>
+            </div>
+            <div class="card-body">
+
+                <fieldset>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="mb-3">
+                                <label class="form-label">İlanı Yayınla</label>
+                                <input asp-for="Durum" class="form-check" disabled />
+
+                            </div>
+                        </div>
+
+
+                    </div>
+
+
+                </fieldset>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+
+
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Geri</a>
+</div>
+@section Scripts {
+    <script src="~/assets/js/vendor/forms/wizards/steps.min.js"></script>
+    <script src="~/assets/js/vendor/forms/validation/validate.min.js"></script>
+    <script src="~/assets/demo/pages/form_wizard.js"></script>
+    <script src="~/assets/demo/pages/form_select2.js"></script>
+    <script src="~/assets/js/vendor/forms/selects/select2.min.js"></script>
+    <script src="~/assets/js/vendor/uploaders/fileinput/fileinput.min.js"></script>
+    <script src="~/assets/js/vendor/uploaders/fileinput/plugins/sortable.min.js"></script>
+    <script src="~/assets/demo/pages/uploader_bootstrap.js"></script>
+    <script src="~/assets/js/vendor/media/glightbox.min.js"></script>
+    <script src="~/assets/demo/pages/gallery.js"></script>
+    <script>
+        $(function () {
+            $('#AracMarkaKOD').change(function () {
+                var id = $('#AracMarkaKOD').val();
+                $.ajax({
+                    url: '/AracBilgisis/AracModelGetir',
+                    data: { id },
+                    type: "Post",
+                    dataType: "Json",
+                    success: function (data) {
+                        //if (data.length > 0) { $('#altmenu').show(); }
+                        //else { $('#altmenu').hide(); }
+
+                        $('#AracModelKOD').empty();
+
+                        for (var i = 0; i < data.length; i++) {
+                            //alert(data[i]);
+                            // console.log(data[i]);
+                            $('#AracModelKOD').append("<option value ='" + data[i].value + "'>"
+                                + data[i].text + "</option>");
+                        }
+                    }
+                })
+
+                //alert(id);
+            })
+
+            $('#AracModelKOD').change(function () {
+                var model = $("#AracModelKOD option:selected").text();
+
+                var kasatipID = 10;
+                var varmi = -1;
+                $("#KasaTipiId > option").each(function () {
+                    //var ara = $.contains(this.text, modely);
+                    //model.contains(this.text);
+                    //$.model.contains(this.text.toUpperCase());
+                    varmi = model.search(this.text.toUpperCase());
+                    console.log(this.text.toUpperCase() + ' ' + this.value + ' ' + model + ' snc' + model.search(this.text.toUpperCase()));
+                    if (varmi > 0) {
+                        kasatipID = this.value;
+
+                        $('#KasaTipiId').val(kasatipID);
+                    } else { $('#KasaTipiId').val(kasatipID); }
+
+                });
+
+
+
+                //alert(model);
+            })
+
+
+            $('#SehirilBilgisiilKOD').change(function () {
+                var id = $('#SehirilBilgisiilKOD').val();
+                $.ajax({
+                    url: '/AracBilgisis/ilcegetirGetir',
+                    data: { id },
+                    type: "Post",
+                    dataType: "Json",
+                    success: function (data) {
+                        //if (data.length > 0) { $('#altmenu').show(); }
+                        //else { $('#altmenu').hide(); }
+
+                        $('#SehirilceBilgisiilceKOD').empty();
+
+                        for (var i = 0; i < data.length; i++) {
+                            //alert(data[i]);
+                            // console.log(data[i]);
+                            $('#SehirilceBilgisiilceKOD').append("<option value ='" + data[i].value + "'>"
+                                + data[i].text + "</option>");
+                        }
+                    }
+                })
+
+                //alert(id);
+            })
+            //$("[name='nameofobject']");
+            $("[name='resimsil']").click(function () {
+                debugger;
+                var id = this.value;
+                // var id = $("[name='resimsil']").val();
+                $.ajax({
+                    url: '/AracBilgisis/aracresimsil',
+                    data: { id },
+                    type: "Post",
+                    dataType: "Json",
+                    success: function (data) {
+                        debugger;
+                        if (data == 1) {
+                            console.log("Kayıt Silindi");
+                            $('#resim_' + id).hide();
+                        }
+                        if (data == -1) {
+                            console.log("Bu Kaydı Silmeye Yetkiniz Yok. Resimleri yalnıca yükleyen kullanıcı silebilir.");
+                        }
+                        if (data == 0) {
+                            console.log("Kayıt Bulunamadı.");
+                        }
+                        //if (data.length > 0) { $('#altmenu').show(); }
+                        //else { $('#altmenu').hide(); }
+
+
+                    }
+                })
+
+                //alert(id);
+            })
+        })
+    </script>
+
+
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

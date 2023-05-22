@@ -1,0 +1,123 @@
+﻿ 
+<html lang="en" dir="ltr">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>Güven Al Sat</title>
+
+	<!-- Global stylesheets -->
+	<link href="~/assets/fonts/inter/inter.css" rel="stylesheet" type="text/css">
+	<link href="~/assets/icons/phosphor/styles.min.css" rel="stylesheet" type="text/css">
+	<link href="~/assets/css/ltr/all.min.css" id="stylesheet" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.2/dist/sweetalert2.min.css">
+	<!-- /global stylesheets -->
+
+	<!-- Core JS files -->
+	
+	<script src="~/assets/js/bootstrap/bootstrap.bundle.min.js"></script>
+	    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.2/dist/sweetalert2.all.min.js"></script>
+		<script src="~/lib/jquery/dist/jquery.js"></script>
+		<script src="~/assets/js/app.js"></script>
+
+
+	
+	 
+	<!-- /core JS files -->
+
+	<!-- Theme JS files -->
+
+	
+
+
+ 
+
+</head>
+
+<body>
+
+	<!-- Main navbar -->
+	 @await Component.InvokeAsync("AdminToolbar")
+	<!-- /main navbar -->
+
+
+	<!-- Page content -->
+	<div class="page-content">
+
+		<!-- Main sidebar -->
+		
+				<!-- /sidebar header -->
+
+
+				<!-- Main navigation -->
+				 
+				@await Component.InvokeAsync("AdminNavbar")
+
+				<!-- /main navigation -->
+
+		
+		<!-- /main sidebar -->
+
+
+		<!-- Main content -->
+		<div class="content-wrapper">
+
+			<!-- Inner content -->
+			<div class="content-inner">
+
+				<!-- Page header -->
+				@await Component.InvokeAsync("AdminPageBaslik")
+				<!-- /page header -->
+				 <div class="content">
+				   @RenderBody()
+					
+				<!-- Content area -->
+				
+				<!-- /content area -->
+
+
+				<!-- Footer -->
+				@await Component.InvokeAsync("AdminFooter")
+
+				<!-- /footer -->
+
+			</div>
+			<!-- /inner content -->
+
+		</div>
+		<!-- /main content -->
+
+	</div>
+	<!-- /page content -->
+
+
+	<!-- Notifications -->
+	 @await Component.InvokeAsync("AdminNotification")
+	<!-- /notifications -->
+	@* @await Component.InvokeAsync("AdminThemaAyar")*@
+
+
+</div>
+</body>
+ @RenderSection("Scripts", false)
+</html>
+
+@*
+      
+      <!-- partial -->
+       
+        <!-- partial:partials/_settings-panel.html -->
+          @await Component.InvokeAsync("AdminThemaAyar")
+         
+        <!-- partial -->
+        <!-- partial:partials/_navbar.html -->
+         @await Component.InvokeAsync("AdminToolbar")
+        <!-- partial -->
+ 
+          
+               *@
+            <!-- first row starts here -->
+
+          
+
+              

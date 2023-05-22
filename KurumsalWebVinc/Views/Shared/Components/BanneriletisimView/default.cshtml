@@ -1,0 +1,55 @@
+﻿  @model IletisimBilgisi
+  @if (Model is not null)
+{
+    <div class="header-top">
+        <div class="container">
+            <div class="header-top-wrapper">
+                <div class="header-top-left">
+                    <div class="header-top-contact">
+                        <ul>
+                            <li>
+                                <a href="mailto:@Model.Eposta1">
+                                    <i class="far fa-envelopes"></i>
+                                   @Model.Eposta1
+                                </a>
+                            </li>
+                            <li>
+                                <a href="tel:@Model.IsTel"><i class="far fa-phone-volume"></i> @Model.IsTel</a>
+                            </li>
+                            <li><a href="#"><i class="far fa-alarm-clock"></i> Pazartesi - Cumartesi (08:00 - 18:00)</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="header-top-right">
+                    <div class="header-top-link">
+                        <a href="~/admin/login"><i class="far fa-arrow-right-to-arc"></i> Giriş Yap</a>
+                        <a href="~/admin/signup"><i class="far fa-user-vneck"></i> Kayıt Ol</a>
+                    </div>
+                    @if (ViewBag.SOS is not null)
+                    {
+                    <div class="header-top-social">
+                        <span>Follow Us: </span>
+                            @if (ViewBag.SOS.Facebook is not null)
+                        {
+                            <a href="http://@ViewBag.SOS.Facebook"><i class="fab fa-facebook"></i></a>
+                        }
+                            @if (ViewBag.SOS.Twitter is not null)
+                            {
+                            <a href="http://@ViewBag.SOS.Twitter"><i class="fab fa-twitter"></i></a>
+                        }
+                            @if (ViewBag.SOS.instagram is not null)
+                        {
+                            <a href="http://@ViewBag.SOS.instagram"><i class="fab fa-instagram"></i></a>
+                        }
+                            @if (ViewBag.SOS.Linkedin is not null)
+                            {
+                            <a href="http://@ViewBag.SOS.Linkedin"><i class="fab fa-linkedin"></i></a>
+                        }
+                    </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+} 

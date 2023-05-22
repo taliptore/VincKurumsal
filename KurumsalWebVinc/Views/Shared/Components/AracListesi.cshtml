@@ -1,0 +1,78 @@
+﻿@model List<AracBilgisi>
+
+
+<div class="car-area bg py-120">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 mx-auto">
+                <div class="site-heading text-center">
+                    <span class="site-title-tagline"><i class="flaticon-drive"></i> YENİ GELENLER</span>
+                    <h2 class="site-title">Yeni İlanlanları <span>Konrol Edelim.</span></h2>
+                    <div class="heading-divider"></div>
+                </div>
+            </div>
+        </div>
+        @if (Model is not null)
+        {
+        <div class="row">
+
+                @foreach (var item in Model)
+                {
+                    <div class="col-md-6 col-lg-4 col-xl-3">
+                        <div class="car-item wow fadeInUp" data-wow-delay=".25s">
+                            <div class="car-img">
+                                @if (@item.AracDurum.AracinDurum.ToString()=="Sıfır")
+                                {
+                                    <span class="car-status status-2">Sıfır</span>
+                                }else
+                                {
+                                    <span class="car-status status-1">İkinci El</span>
+                                }
+                               
+                                @if (item.AracResims.Count > 0)
+                                {
+                                    <img src="@item.AracResims.FirstOrDefault().ResimYolu" 
+                                    class="img-responsive" alt="">
+                                }else
+                                {
+                                    <img src="/motex/assets/img/car/01.jpg" alt="">
+                                }
+                                
+                        <div class="car-btns">
+                           @* <a href="#"><i class="far fa-heart"></i></a>
+                            <a href="#"><i class="far fa-arrows-repeat"></i></a>*@
+                        </div>
+                    </div>
+                    <div class="car-content">
+                        <div class="car-top">
+                            <h4><a href="#">@item.AracMarka.MarkaAdi</a></h4>
+                            <h5><a href="#">@item.AracModel.ModelAdi</a></h5>
+                            <div class="car-rate">
+                              @item.SehirilBilgisi.ilAdi / @item.SehirilceBilgisi.ilceAdi
+                            </div>
+                        </div>
+                        <ul class="car-list">
+                            <li><i class="far fa-steering-wheel"></i>@item.VitesTip.VitesTipi</li>
+                                    <li><i class="far fa-road"></i>KM:@item.KM.ToString("N0")</li>
+                            <li><i class="far fa-car"></i>Model: @item.Yil</li>
+                            <li><i class="far fa-gas-pump"></i>@item.YakitTipi.YakitTip</li>
+                        </ul>
+                        <div class="car-footer">
+                            <span class="car-price">@item.Fiyat.ToString("N0") TL</span>
+                                    <a href="~/Home/aracdetay/@item.Id" class="theme-btn"><span class="far fa-eye"></span>Detaylar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+         }
+        </div>
+        <div class="text-center mt-4">
+            <a href="~/Home/arabalar" class="theme-btn">Tüm İlanları Göster <i class="far fa-arrow-rotate-right"></i> </a>
+        </div>
+        }
+        else
+        {
+            <p>Listelenecek Araç Bulunamadı.</p>
+        }
+    </div>
+</div>

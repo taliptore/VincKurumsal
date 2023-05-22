@@ -1,0 +1,85 @@
+﻿@model SosyalMedyaBilgileri
+
+@{
+    ViewData["Title"] = "SosyalMedyalinkler";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-xl-12 stretch-card grid-margin">
+        <div class="card">
+            <div class="card-header d-flex align-items-center">
+                <h5 class="mb-0">@ViewBag.SayfaAdi </h5>
+                <div class="ms-auto">
+                    <label class="form-check form-switch form-check-reverse">
+                        <input type="checkbox" class="form-check-input" checked>
+                        <span class="form-check-label"></span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="card-body pb-0">
+                <div class="row">
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="CreateSosyalMedya">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Facebook" class="control-label"></label>
+                <input asp-for="Facebook" class="form-control" />
+                <span asp-validation-for="Facebook" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Twitter" class="control-label"></label>
+                <input asp-for="Twitter" class="form-control" />
+                <span asp-validation-for="Twitter" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Youtube" class="control-label"></label>
+                <input asp-for="Youtube" class="form-control" />
+                <span asp-validation-for="Youtube" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Linkedin" class="control-label"></label>
+                <input asp-for="Linkedin" class="form-control" />
+                <span asp-validation-for="Linkedin" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Whatsapp" class="control-label"></label>
+                <input asp-for="Whatsapp" class="form-control" />
+                <span asp-validation-for="Whatsapp" class="text-danger"></span>
+            </div>
+
+                    @{
+
+                        if (Model is null)
+                        {
+                            <input type="hidden" value="0" asp-for="Id" />
+                        }
+                        else
+                        {
+                            <input type="hidden" value="@Model.Id" asp-for="Id" />
+                        }
+
+                    }
+
+
+
+                                <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Durum" /> @Html.DisplayNameFor(model => model.Durum)
+                </label>
+            </div>
+            
+            <div class="form-group">
+                <input type="submit" value="Kaydet" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+ </div></div></div></div></div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

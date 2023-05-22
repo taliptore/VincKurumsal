@@ -1,0 +1,76 @@
+﻿@model             ResimlerDto
+@{
+    ViewData["Title"] = "resim yükle";
+       Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="Create" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Baslik" class="control-label"></label>
+                <input asp-for="Baslik" class="form-control" />
+                <span asp-validation-for="Baslik" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Aciklama" class="control-label"></label>
+                <input asp-for="Aciklama" class="form-control" />
+                <span asp-validation-for="Aciklama" class="text-danger"></span>
+            </div>
+             
+                 
+             
+
+                 
+                    <input asp-for="Path"  type="hidden"    class="form-control">
+                     <input asp-for="FileName" type="hidden" class="form-control">
+				 
+
+              
+            <div class="form-group">
+                
+                     
+                    
+                
+ 
+					<!-- /single file uploader -->
+                    <!-- Using data attributes -->
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="mb-0">Using data-attributes</h5>
+                    </div>
+
+                    <div class="card-body">
+                        <p class="mb-3">Use file input attributes (e.g. multiple upload) for setting input behavior and data attributes to control plugin options. For example, hide/show display of upload button and caption. Note that for multiple inputs, your server code must receive an array of file objects (e.g. for PHP server code, you must use the array naming convention for your input)</p>
+
+                        <p class="fw-semibold">Example</p>
+                        <input type="file" asp-for="Resimler" class="file-input" multiple="multiple" data-show-upload="false" data-show-caption="true" data-show-preview="true">
+                    </div>
+                </div>
+
+					
+					<!-- /using data attributes -->
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Durum" /> @Html.DisplayNameFor(model => model.Durum)
+                </label>
+            </div>
+             
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+@section Scripts {
+    
+    <script src="~/assets/js/jquery/jquery.min.js"></script>
+	<script src="~/assets/js/vendor/uploaders/fileinput/fileinput.min.js"></script>
+	<script src="~/assets/js/vendor/uploaders/fileinput/plugins/sortable.min.js"></script>
+
+	<script src="~/assets/js/app.js"></script>
+	<script src="~/assets/demo/pages/uploader_bootstrap.js"></script>
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+}

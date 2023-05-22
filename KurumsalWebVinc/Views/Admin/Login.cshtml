@@ -1,0 +1,200 @@
+﻿@model LoginDto
+@{
+    ViewData["Title"] = "";
+    Layout = "";
+}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>Giriş</title>
+
+	<!-- Global stylesheets -->
+	<!-- Global stylesheets -->
+	<link href="~/assets/fonts/inter/inter.css" rel="stylesheet" type="text/css">
+	<link href="~/assets/icons/phosphor/styles.min.css" rel="stylesheet" type="text/css">
+	<link href="~/assets/css/ltr/all.min.css" id="stylesheet" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.2/dist/sweetalert2.min.css">
+	<!-- /global stylesheets -->
+	<!-- Core JS files -->
+
+	<script src="~/assets/js/bootstrap/bootstrap.bundle.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.2/dist/sweetalert2.all.min.js"></script>
+	<script src="~/lib/jquery/dist/jquery.js"></script>
+	<script src="~/assets/js/app.js"></script>
+
+</head>
+
+<body>
+
+	<!-- Main navbar -->
+	<div class="navbar navbar-dark navbar-static py-2">
+		<div class="container-fluid">
+			<div class="navbar-brand">
+				<a href="~/home" class="d-inline-flex align-items-center">
+					@*<img src="~/assets/images/logo_icon.svg" alt="">*@
+					<img src="~/logored.png" class="h-48px"  />Eksperli Arabam
+					@*<img src="~/assets/images/logo_text_light.svg" class="d-none d-sm-inline-block h-16px ms-3" alt="">*@
+				</a>
+			</div>
+
+			<div class="d-flex justify-content-end align-items-center ms-auto">
+				<ul class="navbar-nav flex-row">
+
+					<li class="nav-item">
+						<a href="~/Admin/SignUp" class="navbar-nav-link navbar-nav-link-icon rounded ms-1">
+							<div class="d-flex align-items-center mx-md-1">
+								<i class="ph-user-circle-plus"></i>
+								<span class="d-none d-md-inline-block ms-2">Kayıt Ol</span>
+							</div>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a href="~/admin/login" class="navbar-nav-link navbar-nav-link-icon rounded ms-1">
+							<div class="d-flex align-items-center mx-md-1">
+								<i class="ph-user-circle"></i>
+								<span class="d-none d-md-inline-block ms-2">Giriş Yap</span>
+							</div>
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<!-- /main navbar -->
+	<!-- Page content -->
+	<div class="page-content">
+
+		<!-- Main content -->
+		<div class="content-wrapper">
+
+			<!-- Inner content -->
+			<div class="content-inner">
+
+				<!-- Content area -->
+				<div class="content d-flex justify-content-center align-items-center">
+
+					<!-- Login form -->
+					<form class="login-form" asp-action="Login">
+						<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+						<div class="card mb-0">
+							<div class="card-body">
+								<div class="text-center mb-3">
+									<div class="d-inline-flex align-items-center justify-content-center mb-4 mt-2">
+										@*<img src="~/assets/images/logo_icon.svg" class="h-48px" alt="">*@
+										<img src="~/logored.png" class="h-48px" alt="" />
+									</div>
+									<h5 class="mb-0">Hesabınıza giriş yapın...</h5>
+									<span class="d-block text-muted">Kullanıcı bilgilerinizi aşağıya giriniz</span>
+								</div>
+
+								<div class="mb-3">
+									<label class="form-label">Kullanıcı Adı (E-posta)</label>
+									<div class="form-control-feedback form-control-feedback-start">
+										<input class="form-control" placeholder="admin@admin.com" asp-for="Email">
+										<span asp-validation-for="Email" class="text-danger"></span>
+										<div class="form-control-feedback-icon">
+											<i class="ph-user-circle text-muted"></i>
+										</div>
+									</div>
+								</div>
+
+								<div class="mb-3">
+									<label class="form-label" asp-for="Password">Şifre</label>
+									<div class="form-control-feedback form-control-feedback-start">
+										<input class="form-control" placeholder="•••••••••••" asp-for="Password">
+										<span asp-validation-for="Password" class="text-danger"></span>
+										<div class="form-control-feedback-icon">
+											<i class="ph-lock text-muted"></i>
+										</div>
+									</div>
+								</div>
+
+								<div class="d-flex align-items-center mb-3">
+									<label class="form-check">
+										<input type="checkbox" name="remember" class="form-check-input" checked asp-for="RememberMe">
+										<span class="form-check-label">Beni Hatırla</span>
+									</label>
+
+									<a asp-action="ResetPassword" class="ms-auto">Şifremi Unuttum?</a>
+								</div>
+
+								<div class="mb-3">
+									<button type="submit" class="btn btn-primary w-100">Giriş Yap</button>
+								</div>
+
+								@*<div class="text-center text-muted content-divider mb-3">
+									<span class="px-2">Sosyal hesap ile giriş yap</span>
+								</div>
+
+								<div class="text-center mb-3">
+									<button type="button" class="btn btn-outline-primary btn-icon rounded-pill border-width-2"><i class="ph-facebook-logo"></i></button>
+									<button type="button" class="btn btn-outline-pink btn-icon rounded-pill border-width-2 ms-2"><i class="ph-dribbble-logo"></i></button>
+									<button type="button" class="btn btn-outline-secondary btn-icon rounded-pill border-width-2 ms-2"><i class="ph-github-logo"></i></button>
+									<button type="button" class="btn btn-outline-info btn-icon rounded-pill border-width-2 ms-2"><i class="ph-twitter-logo"></i></button>
+								</div>*@
+
+								<div class="text-center text-muted content-divider mb-3">
+									<span class="px-2">Hesabınız yok mu?</span>
+								</div>
+
+								<div class="mb-3">
+									<a asp-action="SignUp" class="btn btn-light w-100">Kayıt Ol</a>
+								</div>
+
+								<span class="form-text text-center text-muted">Devam ederek, koşullarımızı  <a href="#">Terms &amp; Koşullar</a> and <a href="#">Çerez Politikası</a> ve çerez politikalarımızı kabul etmiş sayılırsınız.</span>
+							</div>
+						</div>
+					</form>
+					<!-- /login form -->
+
+				</div>
+				<!-- /content area -->
+				<!-- Footer -->
+				@*<div class="navbar navbar-sm navbar-footer border-top">
+					<div class="container-fluid">
+						<span>&copy; 2022 <a href="https://themeforest.net/item/limitless-responsive-web-application-kit/13080328">Limitless Web App Kit</a></span>
+
+						<ul class="nav">
+							<li class="nav-item">
+								<a href="https://kopyov.ticksy.com/" class="navbar-nav-link navbar-nav-link-icon rounded" target="_blank">
+									<div class="d-flex align-items-center mx-md-1">
+										<i class="ph-lifebuoy"></i>
+										<span class="d-none d-md-inline-block ms-2">Support</span>
+									</div>
+								</a>
+							</li>
+							<li class="nav-item ms-md-1">
+								<a href="https://demo.interface.club/limitless/demo/Documentation/index.html" class="navbar-nav-link navbar-nav-link-icon rounded" target="_blank">
+									<div class="d-flex align-items-center mx-md-1">
+										<i class="ph-file-text"></i>
+										<span class="d-none d-md-inline-block ms-2">Docs</span>
+									</div>
+								</a>
+							</li>
+							<li class="nav-item ms-md-1">
+								<a href="https://themeforest.net/item/limitless-responsive-web-application-kit/13080328?ref=kopyov" class="navbar-nav-link navbar-nav-link-icon text-primary bg-primary bg-opacity-10 fw-semibold rounded" target="_blank">
+									<div class="d-flex align-items-center mx-md-1">
+										<i class="ph-shopping-cart"></i>
+										<span class="d-none d-md-inline-block ms-2">Purchase</span>
+									</div>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>*@
+				<!-- /footer -->
+
+			</div>
+			<!-- /inner content -->
+
+		</div>
+		<!-- /main content -->
+
+	</div>
+	<!-- /page content -->
+	
+</body>
+</html>

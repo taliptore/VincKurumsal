@@ -1,0 +1,84 @@
+﻿@model List<Videolar>
+
+@{
+    ViewData["Title"] = "SayfaGetir";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+ @if (Model is not null)
+{
+    <div class="site-breadcrumb" style="background: url(/motex/assets/img/breadcrumb/01.jpg)">
+        <div class="container">
+            <h2 class="breadcrumb-title"> Videolar</h2>
+            <ul class="breadcrumb-menu">
+                <li><a href="~/home">Anasayfa</a></li>
+                <li class="active">Videolar</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- VIDEOS
+    ================================================== -->
+    <section>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-9">
+                    <br>
+
+                    <div class="video-area pb-120">
+                        <h4 class="mb-0">Eksperli Arabam İle  Güvenle Al-Sat</h4>
+                        <div class="container-fluid px-0">
+                            <div class="video-content" style="background-image: url(/motex/assets/img/video/01.jpg);">
+                                <div class="row align-items-center">
+                                    <div class="col-lg-12">
+                                        <div class="video-wrapper">
+                                            <a class="play-btn popup-youtube" href="~/upload/eksperyap.mp4">
+                                                <i class="fas fa-play"></i>
+
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- youtube video section -->
+                    @foreach (var item in Model)
+                    {
+
+                        var link = item.VideoYol;
+                        if (item.YoutubeLink is not null)
+                        {
+                            link = item.YoutubeLink;
+                        }
+                        <div class="mb-12 mb-lg-12 position-relative elements-block">
+                            <div class="inner-title">
+                                <h4 class="mb-0">@item.VideoBaslik</h4>
+                            </div>
+                            <div>
+
+                                <iframe style=" width:800px; height:600px; "
+                                        src="@link" allow="encrypted-media" allowfullscreen></iframe>
+ 
+                            </div>
+                        </div>
+
+                      
+
+                    }
+
+                    <!-- end youtube video section -->
+
+
+
+                </div>
+
+
+            </div>
+        </div>
+
+    </section>
+}else
+{
+        <p>Yönetim panelinden videoları yükleyiniz.</p>
+}

@@ -1,0 +1,57 @@
+﻿@model             SSS
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-xl-12 stretch-card grid-margin">
+        <div class="card">
+            <div class="card-header d-flex align-items-center">
+                <h5 class="mb-0">SSS Ayarları </h5>
+                <div class="ms-auto">
+                    <label class="form-check form-switch form-check-reverse">
+                        <input type="checkbox" class="form-check-input" checked>
+                        <span class="form-check-label"></span>
+                    </label>
+                </div>
+            </div>
+            <div class="card-body pb-0">
+                <div class="row">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Soru" class="control-label"></label>
+                <input asp-for="Soru" class="form-control" />
+                <span asp-validation-for="Soru" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Cevap" class="control-label"></label>
+                <textarea asp-for="Cevap" rows="5" class="form-control" ></textarea>
+                <span asp-validation-for="Cevap" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Durum" /> @Html.DisplayNameFor(model => model.Durum)
+                </label>
+            </div>
+       
+            <div class="form-group">
+                <input type="submit" value="Kaydet" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+        </div>
+    </div>
+</div></div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+
+ 

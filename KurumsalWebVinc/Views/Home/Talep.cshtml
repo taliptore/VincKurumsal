@@ -1,0 +1,194 @@
+﻿@model             TalepFormu
+
+
+
+<section class="contact-form">
+    <div class="container">
+        <div class="section-title mb-2-3 mb-md-6 text-center">
+            <span class="sub-title wow text-animation" data-in-effect="fadeInRight"> @ViewData["Title"]</span>
+            <h2 class="h1">Bizimle İletişime Geçin</h2>
+        </div>
+        <div class="contact-wrapper-box">
+            <div class="row">
+                <div class="col-lg-6 bg-img cover-background d-none d-lg-block image-hover" data-overlay-dark="0" data-background="img/content/contact-img.jpg"></div>
+                <div class="col-lg-6">
+                    <div class="contact-form-area">
+                        <h3 class="mb-1-6">Bizi arayın veya formu doldurun</h3>
+
+
+
+                        <form class="quform" action="contakAdmin/talepGonder" method="post" enctype="multipart/form-data" onclick="">
+
+                            <div class="quform-elements">
+
+                                <div class="row">
+
+                                    <!-- Begin Text input element -->
+                                    <div class="col-md-6">
+                                        <div class="quform-element form-group">
+                                            <label for="name">Adınız <span class="quform-required">*</span></label>
+                                            <div class="quform-input">
+                                                <input class="form-control" id="name" type="text" name="name" placeholder="Adınzı buraya yazınız" />
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <!-- End Text input element -->
+                                    <!-- Begin Text input element -->
+                                    <div class="col-md-6">
+                                        <div class="quform-element form-group">
+                                            <label for="email"> Email <span class="quform-required">*</span></label>
+                                            <div class="quform-input">
+                                                <input class="form-control" id="email" type="text" name="email" placeholder="E mail adresini yazınız" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- End Text input element -->
+                                    <!-- Begin Text input element -->
+                                    <div class="col-md-6">
+                                        <div class="quform-element form-group">
+                                            <label for="subject">Adres <span class="quform-required">*</span></label>
+                                            <div class="quform-input">
+                                                <input class="form-control" id="subject" type="text" name="subject" placeholder="Adresiniz" />
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <!-- End Text input element -->
+                                    <!-- Begin Text input element -->
+                                    <div class="col-md-6">
+                                        <div class="quform-element form-group">
+                                            <label for="phone">İletişim Numarası </label>
+                                            <div class="quform-input">
+                                                <input class="form-control" id="phone" type="text" name="phone" placeholder="İletişim Numarası yazınız" />
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <!-- End Text input element -->
+                                    <!-- Begin Textarea element -->
+                                    <div class="col-md-12">
+                                        <div class="quform-element form-group">
+                                            <label for="message">Mesaj <span class="quform-required">*</span></label>
+                                            <div class="quform-input">
+                                                <textarea class="form-control" id="message" name="message" rows="3" placeholder=""></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- End Textarea element -->
+                                    <!-- Begin Captcha element -->
+                                    <div class="col-md-12">
+                                        <div class="quform-element">
+                                            <div class="form-group">
+                                                <div class="quform-input">
+                                                    <input class="form-control" id="type_the_word" type="text" name="type_the_word" placeholder="Aşağıdaki güvenlik metnini yazınız" />
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="quform-captcha">
+                                                    <div class="quform-captcha-inner">
+                                                        <p id="@ViewBag.GvKodu"> @ViewBag.GvKodu</p>
+                                                        <input type="hidden" value="@ViewBag.GvKodu" class="form-control" />
+                                                        @*  <img src="quform/images/captcha/courier-new-light.png" alt="...">*@
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- End Captcha element -->
+                                    <!-- Begin Submit button -->
+                                    <div class="col-md-12">
+                                        <div class="quform-submit-inner">
+                                            <button class="butn theme butn-md" type="submit"><span>Formu Gönder</span></button>
+                                        </div>
+                                        <div class="quform-loading-wrap text-start"><span class="quform-loading"></span></div>
+                                    </div>
+                                    <!-- End Submit button -->
+
+                                </div>
+
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<h4>TalepFormu</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Talep"  > 
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Ad" class="control-label"></label>
+                <input asp-for="Ad" class="form-control" />
+                <span asp-validation-for="Ad" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Soyad" class="control-label"></label>
+                <input asp-for="Soyad" class="form-control" />
+                <span asp-validation-for="Soyad" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Mail" class="control-label"></label>
+                <input asp-for="Mail" class="form-control" />
+                <span asp-validation-for="Mail" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Adres" class="control-label"></label>
+                <input asp-for="Adres" class="form-control" />
+                <span asp-validation-for="Adres" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="iletisimNo" class="control-label"></label>
+                <input asp-for="iletisimNo" class="form-control" />
+                <span asp-validation-for="iletisimNo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Mesaj" class="control-label"></label>
+                <input asp-for="Mesaj" class="form-control" />
+                <span asp-validation-for="Mesaj" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GuvenlikKodu" class="control-label"></label>
+                <input asp-for="GuvenlikKodu" class="form-control" />
+                <span asp-validation-for="GuvenlikKodu" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Id" class="control-label"></label>
+                <input asp-for="Id" class="form-control" />
+                <span asp-validation-for="Id" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Durum" /> @Html.DisplayNameFor(model => model.Durum)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="CreateDate" class="control-label"></label>
+                <input asp-for="CreateDate" class="form-control" />
+                <span asp-validation-for="CreateDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UpdateDate" class="control-label"></label>
+                <input asp-for="UpdateDate" class="form-control" />
+                <span asp-validation-for="UpdateDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

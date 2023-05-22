@@ -1,0 +1,69 @@
+﻿@model             MailAyarlari
+
+@{
+    ViewData["Title"] = "EpostaEdit";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-xl-12 stretch-card grid-margin">
+        <div class="card">
+            <div class="card-header d-flex align-items-center">
+                <h5 class="mb-0">Eposta Ayarları</h5>
+                <div class="ms-auto">
+                    <label class="form-check form-switch form-check-reverse">
+                        <input type="checkbox" class="form-check-input" checked>
+                        <span class="form-check-label"></span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="card-body pb-0">
+        <form asp-action="EpostaEdit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="MailSmtp" class="control-label"></label>
+                <input asp-for="MailSmtp" class="form-control" />
+                <span asp-validation-for="MailSmtp" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MailAdres" class="control-label"></label>
+                <input asp-for="MailAdres" class="form-control" />
+                <span asp-validation-for="MailAdres" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MailSifre"  class="control-label"></label>
+                        <input asp-for="MailSifre" type="password" class="form-control"  />
+                <span asp-validation-for="MailSifre" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SmtpPort" class="control-label"></label>
+                <input asp-for="SmtpPort" class="form-control" />
+                <span asp-validation-for="SmtpPort" class="text-danger"></span>
+            </div>
+            @if (Model is null)
+                    {
+                        <input type="hidden" asp-for="Id" value="0" />
+                    }else
+                    {
+                        <input type="hidden" asp-for="Id"   />
+                    }
+           
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Durum" /> @Html.DisplayNameFor(model => model.Durum)
+                </label>
+            </div>
+         
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+</div></div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

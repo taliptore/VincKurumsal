@@ -1,0 +1,92 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>Plus Admin</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="~/assets/vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="~/assets/vendors/flag-icon-css/css/flag-icon.min.css">
+    <link rel="stylesheet" href="~/assets/vendors/css/vendor.bundle.base.css">
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <link rel="stylesheet" href="~/assets/vendors/jquery-bar-rating/css-stars.css" />
+    <link rel="stylesheet" href="~/assets/vendors/font-awesome/css/font-awesome.min.css" />
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <!-- endinject -->
+    <!-- Layout styles -->
+    <link rel="stylesheet" href="~/assets/css/demo_1/style.css" />
+    <!-- End layout styles -->
+    <link rel="shortcut icon" href="~/assets/images/favicon.png" />
+       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.2/dist/sweetalert2.min.css">
+  </head>
+  <body>
+    <div class="container-scroller">
+    @*  <div class="row p-0 m-0 proBanner" id="proBanner">
+        <div class="col-md-12 p-0 m-0">
+          <div class="card-body card-body-padding d-flex align-items-center justify-content-between">
+            <div class="ps-lg-1">
+              <div class="d-flex align-items-center justify-content-between">
+                <p class="mb-0 font-weight-medium me-3 buy-now-text">Free 24/7 customer support, updates, and more with this template!</p>
+                <a href="https://www.bootstrapdash.com/product/plus-admin-template/?utm_source=organic&utm_medium=banner&utm_campaign=buynow_demo" target="_blank" class="btn me-2 buy-now-btn border-0">Get Pro</a>
+              </div>
+            </div>
+            <div class="d-flex align-items-center justify-content-between">
+              <a href="https://www.bootstrapdash.com/product/plus-admin-template/"><i class="mdi mdi-home me-3 text-white"></i></a>
+              <button id="bannerClose" class="btn border-0 p-0">
+                <i class="mdi mdi-close text-white me-0"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>*@
+      <!-- partial:partials/_sidebar.html -->
+       @await Component.InvokeAsync("AdminNavbar")
+      <!-- partial -->
+      <div class="container-fluid page-body-wrapper">
+        <!-- partial:partials/_settings-panel.html -->
+          @await Component.InvokeAsync("AdminThemaAyar")
+         
+        <!-- partial -->
+        <!-- partial:partials/_navbar.html -->
+         @await Component.InvokeAsync("AdminToolbar")
+        <!-- partial -->
+        <div class="main-panel">
+          <div class="content-wrapper pb-0">
+          
+               @await Component.InvokeAsync("AdminPageBaslik")
+            <!-- first row starts here -->
+
+             @RenderBody()
+
+
+        
+          </div>
+          <!-- content-wrapper ends -->
+          <!-- partial:partials/_footer.html -->
+          <footer class="footer">
+            <div class="d-sm-flex justify-content-center justify-content-sm-between">
+              <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2021 <a href="https://www.bootstrapdash.com/" target="_blank">BootstrapDash</a>. All rights reserved.</span>
+              <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="mdi mdi-heart text-danger"></i></span>
+            </div>
+          </footer>
+          <!-- partial -->
+        </div>
+        <!-- main-panel ends -->
+      </div>
+      <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+    <!-- plugins:js -->
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.2/dist/sweetalert2.all.min.js"></script>
+     @RenderSection("Scripts", false)
+    <!-- End custom js for this page -->
+  </body>
+</html>
+
+       
+

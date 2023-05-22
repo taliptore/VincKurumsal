@@ -1,0 +1,203 @@
+﻿@model IEnumerable<AracBilgisi>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="content">
+
+    <!-- Media library -->
+    <div class="card">
+        <div class="card-header d-flex align-items-center">
+            <h6 class="mb-0">Araç  Listesi</h6>
+            <div class="ms-auto">
+                <a asp-action="Create"
+                   class="btn btn-primary">
+                    <i class="ph-plus">Yeni İlan Gir</i>
+                </a>
+            </div>
+        </div>
+        <div class="card-body pb-0">
+            <div class="card-body pb-0">
+                @if (Model is not null)
+                {
+                    <div class="row">
+
+                        <table class="table media-library table-hover">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Id)
+                                    </th>
+                                    <th>
+
+                                    </th>
+                                    <th>
+                                        İlan Yapan
+                                    </th>
+                                    <th>
+                                        İlan Başlığı
+                                    </th>
+                                    <th>
+                                        Marka
+                                    </th>
+                                    <th>
+                                        Model
+                                    </th>
+
+
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Fiyat)
+                                    </th>
+                                    <th>
+                                        Yıl
+                                    </th>
+                                    <th>
+                                        Kilometre
+                                    </th>
+
+
+                                    <th>
+                                        Rengi
+                                    </th>
+                                    <th>
+                                        Kasa Tipi
+                                    </th>
+
+
+
+
+                                    <th>
+                                        İl/İlçe
+                                    </th>
+
+                                    <th>
+                                        İlan Durumu
+                                    </th>
+                                    <th>
+                                        Rapor
+                                    </th>
+
+                                    <th>İşlem</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Id)
+                                        </td>
+                                        <td>
+                                            @if (item.AracResims.Where(x => x.AracBilgisiId == item.Id).Count() > 0)
+                                            {
+                                                <a href="@item.AracResims.FirstOrDefault(x=>x.AracBilgisiId==item.Id).ResimYolu" data-bs-popup="lightbox">
+                                                    <img src="@item.AracResims.FirstOrDefault(x=>x.AracBilgisiId==item.Id).ResimYolu" style="width:100px; height:100px; " alt="" class="img-preview rounded">
+                                                </a>
+                                            }
+
+
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.User.UserName)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Baslik)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.AracMarka.MarkaAdi)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.AracModel.ModelAdi)
+                                        </td>
+
+
+
+
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Fiyat.ToString("N0"))
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Yil)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.KM)
+                                        </td>
+
+
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.AracRenk.Renk)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.KasaTipi.KasaTip)
+                                        </td>
+
+
+
+
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.SehirilBilgisi.ilAdi) / @Html.DisplayFor(modelItem => item.SehirilceBilgisi.ilceAdi)
+                                        </td>
+
+                                        <td>
+                                            <input class="form-check-input" id="durumilanchk" name="durumilanchk" type="checkbox" value="@item.Id " checked="@item.Durum" />
+
+
+                                        </td>
+                                        <td>
+
+                                            @if (item.AracRapors is not null)
+                                            {
+                                                <div class="card-header">
+                                                    <a href="@item.AracRapors.RaporYolu" target="_blank">Rapor İncele</a>
+                                                </div>
+                                            }
+                                            else
+                                            {
+
+                                                <a asp-action="RaporEkleDuzenle" class="text-success mx-2" asp-route-id="@item.Id" data-bs-popup="tooltip" data-bs-original-title="Expertiz Raporu Ekle">Rapor Yükle<i class="ph-plus"></i></a>
+                                            }
+
+
+
+                                        </td>
+
+                                        <td>
+                                            @*<a asp-action="RaporEkleDuzenle" class="text-success mx-2" asp-route-id="@item.Id" data-bs-popup="tooltip" data-bs-original-title="Expertiz Raporu Ekle"><i class="ph-plus"></i></a>*@
+
+                                            <a asp-action="Edit" class="text-primary " asp-route-id="@item.Id" data-bs-popup="tooltip" data-bs-original-title="Düzünle"> <i class="ph-pen"></i></a>
+                                            <a asp-action="Details" class="text-teal  mx-2" asp-route-id="@item.Id" data-bs-popup="tooltip" data-bs-original-title="İncele"> <i class="ph-eye"></i></a>
+                                            <a asp-action="Delete" class="text-danger " asp-route-id="@item.Id" data-bs-popup="tooltip" data-bs-original-title="Sil"><i class="ph-trash"></i></a>
+
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+
+                    </div>
+                }
+                else
+                {
+                    <p>İlan Bulunamdı.</p>
+                }
+
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+
+    <!-- Theme JS files -->
+
+    <script src="~/assets/js/vendor/tables/datatables/datatables.min.js"></script>
+    <script src="~/assets/js/vendor/media/glightbox.min.js"></script>
+
+    @*<script src="~/assets/js/app.js"></script>*@
+    <script src="~/assets/demo/pages/gallery_library.js"></script>
+    <script src="~/js/OzelJs/DurumAktifPasifEtme.js"></script>
+
+
+}

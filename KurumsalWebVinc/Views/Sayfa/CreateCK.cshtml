@@ -1,0 +1,157 @@
+﻿@model             Icerik
+@{
+    ViewData["Title"] = "Create";
+    Layout = "";
+}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>Limitless - Responsive Web Application Kit by Eugene Kopyov</title>
+
+	<!-- Global stylesheets -->
+	<link href="~/assets/fonts/inter/inter.css" rel="stylesheet" type="text/css">
+	<link href="~/assets/icons/phosphor/styles.min.css" rel="stylesheet" type="text/css">
+	<link href="~/assets/css/ltr/all.min.css" id="stylesheet" rel="stylesheet" type="text/css">
+	<!-- /global stylesheets -->
+
+	<!-- Core JS files -->
+	@*<script src="~/assets/demo/demo_configurator.js"></script>
+	<script src="~/assets/js/bootstrap/bootstrap.bundle.min.js"></script>*@
+	<!-- /core JS files -->
+
+	<!-- Theme JS files -->
+	<script src="~/assets/js/vendor/editors/ckeditor/ckeditor_classic.js"></script>
+
+	@*<script src="~/assets/js/app.js"></script>*@
+	<script src="~/assets/demo/pages/editor_ckeditor_classic.js"></script>
+	<!-- /theme JS files -->
+
+</head>
+
+<body>
+
+ 
+
+	<!-- Page content -->
+	<div class="page-content">
+
+		<!-- Main sidebar -->
+	
+
+		<!-- Main content -->
+		<div class="content-wrapper">
+
+			<!-- Inner content -->
+			<div class="content-inner">
+
+				<!-- Page header -->
+		 
+				<!-- /page header -->
+
+
+				<!-- Content area -->
+				<div class="content">
+
+					<!-- CKEditor default -->
+					<div class="card">
+						<div class="card-header">
+							<h5 class="mb-0">Classic editor</h5>
+						</div>
+
+						<div class="card-body">
+							<p class="mb-3">Classic editor is what most users traditionally learnt to associate with a rich text editor — a toolbar with an editing area placed in a specific position on the page, usually as a part of a form that you use to submit some content to the server. During its initialization the editor hides the used editable element on the page and renders “instead” of it. This is why it is usually used to replace <code>&lt;textarea></code> elements.</p>
+
+							<form action="#">
+								<div class="mb-3">
+									<textarea class="form-control" id="ckeditor_classic_prefilled">
+										
+									</textarea>
+					            </div>
+
+					            <div class="text-end">
+						            <button type="submit" class="btn btn-primary">Submit form <i class="ph-paper-plane-tilt ms-2"></i></button>
+					            </div>
+				            </form>
+						</div>
+					</div>
+					<!-- /CKEditor default -->
+
+
+					<!-- Empty with placeholder -->
+
+					<!-- /empty with placeholder -->
+
+
+					<!-- Read-only mode -->
+					
+					<!-- /read-only mode -->
+
+				</div>
+				<!-- /content area -->
+
+
+				<!-- Footer -->
+			 
+				<!-- /footer -->
+
+			</div>
+			<!-- /inner content -->
+
+		</div>
+		<!-- /main content -->
+
+	</div>
+	<!-- /page content -->
+
+
+	<!-- Notifications -->
+	 
+	<!-- /notifications -->
+
+
+	<!-- Demo config -->
+	 
+	<!-- /demo config -->
+
+</body>
+</html>
+
+
+@section Scripts {
+   @* <link href="~/assets/fonts/inter/inter.css" rel="stylesheet" type="text/css">
+    <link href="~/assets/icons/phosphor/styles.min.css" rel="stylesheet" type="text/css">
+    <link href="~/assets/css/ltr/all.min.css" id="stylesheet" rel="stylesheet" type="text/css">
+    <!-- /global stylesheets -->
+    <!-- Core JS files -->
+    <script src="~/assets/demo/demo_configurator.js"></script>
+    <script src="~/assets/js/bootstrap/bootstrap.bundle.min.js"></script>
+    <!-- /core JS files -->
+    <!-- Theme JS files -->
+    <script src="~/assets/js/vendor/editors/ckeditor/ckeditor_classic.js"></script>
+
+    <script src="~/assets/js/app.js"></script>
+    <script src="~/assets/demo/pages/editor_ckeditor_classic.js"></script>*@
+@*    <script>
+        $(document).ready(function(){
+            CKEDITOR.replace('ckeditor_classic_prefilled',{
+                height:400,
+                filebrowsesUploadUrl: '/sayfa/upload_ckeditor'
+            });
+        });
+    </script>*@
+
+	<script>
+		//ckeditor
+		//	.create(document.querySelector('#ckeditor_classic_prefilled'),
+		//		{
+		//			language: 'fa',
+		//			ckfinder: { uploadUrl: '/sayfa/upload_ckeditor' }
+		//		})
+		//	.catch(error => { console.error(error); });
+	</script>
+
+
+}

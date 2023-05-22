@@ -1,0 +1,174 @@
+﻿@model KadromuzDto
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="row">
+    <div class="col-xl-12 stretch-card grid-margin">
+        <div class="card">
+            <div class="card-header d-flex align-items-center">
+                <h5 class="mb-0">Düzenle </h5>
+                <div class="ms-auto">
+                    <label class="form-check form-switch form-check-reverse">
+                        <input type="checkbox" class="form-check-input" checked>
+                        <span class="form-check-label"></span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="card-body pb-0">
+                <form asp-action="Edit" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="row">
+                        <div class="col-md-8">
+            <div class="form-group">
+                <label asp-for="Isim" class="control-label"></label>
+                <input asp-for="Isim" class="form-control" />
+                <span asp-validation-for="Isim" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Uzmanlik" class="control-label"></label>
+                <input asp-for="Uzmanlik" class="form-control" />
+                <span asp-validation-for="Uzmanlik" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Aciklama" class="control-label"></label>
+                                <textarea asp-for="Aciklama" TextMode="MultiLine" rows="5" class="form-control"></textarea>
+                                <span asp-validation-for="Aciklama" class="text-danger"></span>
+            </div>
+             
+            
+           
+            <input type="hidden" asp-for="Id" />
+            
+          
+        
+               <div class="card">
+                            <div class="card-header d-flex align-items-center">
+                                <h5 class="mb-0">Sayfayı Yayınla </h5>
+                                <div class="ms-auto">
+                                    <label class="form-check form-switch form-check-reverse">
+                                        <input type="checkbox" class="form-check-input" checked>
+                                        <span class="form-check-label"></span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="card-body pb-3">
+                                <div class="form-group form-check">
+                                    <label class="form-check-label">
+                                        <input class="form-check-input" asp-for="Durum" /> Yayınla
+                                    </label>
+
+                                </div>
+                                <hr />
+                                <div class="btn btn-primary btn-block">
+                                    <input type="submit" value="Kaydet" class="btn btn-primary btn-block" />
+                                </div>
+                            </div>
+                        </div>
+        </div>
+                    <div class="col-md-4">
+
+                    
+                        <div class="card">
+                            <div class="card-header d-flex align-items-center">
+                                <h5 class="mb-0">Detaylar </h5>
+                                <div class="ms-auto">
+                                    <label class="form-check form-switch form-check-reverse">
+                                        <input type="checkbox" class="form-check-input" checked>
+                                        <span class="form-check-label"></span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="card-body pb-3">
+                                <div class="form-group">
+                                    <label asp-for="Twiter" class="control-label"></label>
+                                    <input asp-for="Twiter" class="form-control" />
+                                    <span asp-validation-for="Twiter" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Facebok" class="control-label"></label>
+                                    <input asp-for="Facebok" class="form-control" />
+                                    <span asp-validation-for="Facebok" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Instagram" class="control-label"></label>
+                                    <input asp-for="Instagram" class="form-control" />
+                                    <span asp-validation-for="Instagram" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Google" class="control-label"></label>
+                                    <input asp-for="Google" class="form-control" />
+                                    <span asp-validation-for="Google" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Mail" class="control-label"></label>
+                                    <input asp-for="Mail" class="form-control" />
+                                    <span asp-validation-for="Mail" class="text-danger"></span>
+                                </div>
+                                    @if (Model.SayfaId>0)
+                                    {
+                                        <input type="hidden" asp-for="SayfaId" class="form-control" />
+
+                                    }else
+                                    {
+                                        <input type="hidden" asp-for="SayfaId" value="0" class="form-control" />
+
+                                    }
+                                    <input type="hidden" asp-for="SayfaUrl" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header d-flex align-items-center">
+                                <h5 class="mb-0">Resim </h5>
+                                <div class="ms-auto">
+                                    <label class="form-check form-switch form-check-reverse">
+                                        Resim boyutu 545*685 olarak giriniz.
+                                    </label>
+                                </div>
+                            </div>
+                            @if (@Model.Resim is not null)
+                            {
+                                <div class="card-body pb-3">
+                                <div class="form-group">
+                                            <img src="@Model.Resim" style="width:-webkit-fill-available" />
+                                           </div>
+                            </div> 
+                            }
+                           
+
+                            <div class="card-body pb-3">
+                                <div class="form-group">
+                                    <label asp-for="Resim" class="control-label">Sayfa Resmi</label>
+                                    @*<input asp-for="KucukResim" class="form-control" />*@
+
+                                    <input type="file" asp-for="ResimFile" class="file-input" multiple="multiple" data-show-upload="false" data-show-caption="true" data-show-preview="true">
+                                        <input type="hidden" asp-for="Resim"  class="form-control" />
+
+
+                                    <span asp-validation-for="Resim" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        </div>
+                        </div>
+
+</form>
+    </div>
+</div>
+
+</div></div>
+
+@section Scripts {
+
+    <script src="~/assets/js/vendor/uploaders/fileinput/fileinput.min.js"></script>
+    <script src="~/assets/js/vendor/uploaders/fileinput/plugins/sortable.min.js"></script>
+    <script src="~/assets/demo/pages/uploader_bootstrap.js"></script>
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

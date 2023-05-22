@@ -1,0 +1,96 @@
+﻿@model List<SlideModel>
+@{
+    if(Model.Count>0)
+    {
+       
+
+       
+        <div class="hero-section">
+            <div class="hero-slider owl-carousel owl-theme">
+                @foreach (var item in Model)
+                {
+                    <div class="hero-single" style="background: url(@item.Resim)">
+                    <div class="container">
+                        <div class="row align-items-center">
+                            <div class="col-md-12 col-lg-6">
+                                    <div class="hero-content">
+                                        <h6 class="hero-sub-title" data-animation="fadeInUp" data-delay=".25s">
+                                            Eksperli Arabam
+                                        </h6>
+                                        <h1 class="hero-title" data-animation="fadeInRight" data-delay=".50s">
+                                            @item.Baslik
+                                        </h1>
+                                        <p data-animation="fadeInLeft" data-delay=".75s">
+                                            @item.Aciklama
+                                        </p>
+                                        <div class="hero-btn" data-animation="fadeInUp" data-delay="1s">
+                                            <a href="~/home/Hakkimizda" class="theme-btn">
+                                                Hakkımızda<i class="fas fa-arrow-right-long"></i>
+                                            </a>
+                                            <a href="~/home/arabalar" class="theme-btn theme-btn2">
+                                                Araba Listesi<i class="fas fa-arrow-right-long"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                            </div>
+                            <div class="col-md-12 col-lg-6">
+                                <div class="hero-right">
+                                    <div class="hero-img">
+                                        <img src="@item.Resim" alt="" data-animation="fadeInRight"
+                                             data-delay=".25s">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+               }
+            </div>
+        </div>
+    
+        
+        
+    }else
+    {
+        <div class="hero-section">
+            <div class="hero-slider owl-carousel owl-theme">
+                <div class="hero-single" style="background: url(/motex/assets/img/slider/slider-1.jpg)">
+                    <div class="container">
+                        <div class="row align-items-center">
+                            <div class="col-md-12 col-lg-6">
+                                <div class="hero-content">
+                                    <h6 class="hero-sub-title" data-animation="fadeInUp" data-delay=".25s">
+                                        Eksperli Arabam
+                                    </h6>
+                                    <h1 class="hero-title" data-animation="fadeInRight" data-delay=".50s">
+                                        Yönetim Panelinden Slide Kımından veri yükleyiniz
+                                    </h1>
+                                    <p data-animation="fadeInLeft" data-delay=".75s">
+                                        Yönetim Panelinden Slide Kımından veri yükleyiniz
+                                    </p>
+                                    <div class="hero-btn" data-animation="fadeInUp" data-delay="1s">
+                                        <a href="~/home/Hakkimizda" class="theme-btn">
+                                            Hakkımızda<i class="fas fa-arrow-right-long"></i>
+                                        </a>
+                                        <a href="~/home/arabalar" class="theme-btn theme-btn2">
+                                            Araba Listesi<i class="fas fa-arrow-right-long"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12 col-lg-6">
+                                <div class="hero-right">
+                                    <div class="hero-img">
+                                        <img src="/motex/assets/img/slider/hero-1.png" alt="" data-animation="fadeInRight"
+                                             data-delay=".25s">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+              
+            </div>
+        </div>
+    }
+}

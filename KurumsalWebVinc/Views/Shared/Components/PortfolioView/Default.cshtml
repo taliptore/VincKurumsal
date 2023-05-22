@@ -1,0 +1,81 @@
+﻿@model List<Kadromuz>
+@{
+    if (Model.Count>0)
+    {
+  
+
+
+        <div class="testimonial-area bg py-120">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 mx-auto">
+                        <div class="site-heading text-center">
+                            <span class="site-title-tagline"><i class="flaticon-drive"></i> Mutlu Müşteriler</span>
+                            <h2 class="site-title">Müşterilerimizden Gelen  <span>Yorumlar</span></h2>
+                            <div class="heading-divider"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-slider owl-carousel owl-theme">
+                    @foreach (var item in Model)
+                    {
+                    <div class="testimonial-single">
+                        <div class="testimonial-content">
+                            <div class="testimonial-author-img">
+                                    @if (item.Resim is null)
+                                    {
+                                        <img src="/motex/assets/img/testimonial/01.jpg" alt="">
+                                    }
+                                    else
+                                    {
+                                        <img src="@item.Resim" class="img-responsive" alt="">
+                                    }
+                                
+                            </div>
+                            <div class="testimonial-author-info">
+                                <h4>@item.Isim</h4>
+                                <p>Müşteri</p>
+                            </div>
+                        </div>
+                        <div class="testimonial-quote">
+                            <span class="testimonial-quote-icon"><i class="flaticon-quote"></i></span>
+                            <p>
+                               @item.Aciklama
+                            </p>
+                        </div>
+                        <div class="testimonial-rate">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    }
+              
+                </div>
+            </div>
+        </div>
+
+    }else
+    {
+        <div class="testimonial-area bg py-120">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 mx-auto">
+                        <div class="site-heading text-center">
+                            <span class="site-title-tagline"><i class="flaticon-drive"></i> Mutlu Müşteri Kısmı</span>
+                            <h2 class="site-title">Müşteriler <span>Müşteri</span></h2>
+                            <div class="heading-divider"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-slider owl-carousel owl-theme">
+
+                </div>
+            </div>
+        </div>
+
+    
+    }
+}

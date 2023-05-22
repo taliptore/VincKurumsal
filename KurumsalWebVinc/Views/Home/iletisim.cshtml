@@ -1,0 +1,246 @@
+﻿@model TalepFormuDto
+@{
+    ViewData["Title"] = "Talep Formu";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+  <!-- PAGETITLE
+        ================================================== -->
+ @if (Model is not null)
+{
+    <div class="site-breadcrumb" style="background: url(/motex/assets/img/breadcrumb/01.jpg)">
+        <div class="container">
+            <h2 class="breadcrumb-title">@ViewData["Title"]</h2>
+            <ul class="breadcrumb-menu">
+                <li><a href="index.html">@ViewData["Title"]</a></li>
+                <li class="active">@ViewData["Title"]</li>
+            </ul>
+        </div>
+    </div>
+    <div class="contact-area py-120">
+        <div class="container">
+            @if (@ViewBag.iletisim is not null)
+            {
+                <div class="contact-content">
+                    <div class="row">
+                    <div class="col-md-3">
+                        <div class="contact-info">
+                            <div class="contact-info-icon">
+                                <i class="fal fa-map-location-dot"></i>
+                            </div>
+                            <div class="contact-info-content">
+                                <h5>Adres</h5>
+                                    <p>@ViewBag.iletisim.Adres</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="contact-info">
+                            <div class="contact-info-icon">
+                                <i class="fal fa-phone-volume"></i>
+                            </div>
+                            <div class="contact-info-content">
+                                <h5>Tel</h5>
+                                    <p>@ViewBag.iletisim.IsTel</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="contact-info">
+                            <div class="contact-info-icon">
+                                <i class="fal fa-envelopes"></i>
+                            </div>
+                            <div class="contact-info-content">
+                                <h5>Email</h5>
+                                    <p>@ViewBag.iletisim.Eposta2</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="contact-info">
+                            <div class="contact-info-icon">
+                                <i class="fal fa-alarm-clock"></i>
+                            </div>
+                            <div class="contact-info-content">
+                                <h5>Çalışma Saatleri</h5>
+                                <p>Pazartesi - Cumartesi (08.00 - 18:30)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            }
+            <div class="contact-wrapper">
+                <div class="row">
+                    <div class="col-lg-6 align-self-center">
+                        <div class="contact-img">
+                            <img src="/upload/images/5a671cfb-3f04-4918-9931-635401ba6742.png" alt="">
+                        </div>
+                    </div>
+                    <div class="col-lg-6 align-self-center">
+                        <div class="contact-form">
+                            <div class="contact-form-header">
+                                <h2>Hizmet Talebi</h2>
+                                <p>Bizden hangi talebi istiyorsanız formu doldurup yollayınız en kısa sürede sizinle iletişime geçelim.
+                                </p>
+                            </div>
+                            <form asp-action="iletisim" method="post">
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input asp-for="Ad" type="text" class="form-control" 
+                                                   placeholder="Adınız" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" asp-for="Soyad"
+                                                   placeholder="Soyadı" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" asp-for="Mail" class="form-control"  
+                                           placeholder="Mail Adresi" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" asp-for="iletisimNo" class="form-control"
+                                           placeholder="İrtibat Numarası" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" asp-for="Adres" class="form-control"
+                                           placeholder="Adres" >
+                                </div>
+                                 @if (ViewBag.TalepMadde is not null)
+                                {
+
+
+                                    @if (((IEnumerable<object>)ViewBag.TalepMadde).ToList().Count() > 0)
+                                    {
+                                        <div class="col-md-12">
+                                            <div class="quform-element form-group">
+                                                <label for="subject">Hizmet Seçiniz? <span class="quform-required">*</span></label>
+                                                <div class="quform-input">
+                                                    <select asp-for="ServislerIdKod" class="form-control" asp-items="ViewBag.TalepMadde">
+                                                        <option value="-1*False*False">Diğer</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="col-md-12" id="BulSehir">
+                                            <div class="quform-element form-group">
+                                                <label for="subject">Hizmet Alınacağı Şehri Seçiniz <span class="quform-required">*</span></label>
+                                                <div class="quform-input">
+                                                    <select asp-for="BulSehirId" class="form-control" asp-items="ViewBag.SehirilBilgisiId">
+                                                        <option value="-1">---</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="col-md-12" id="GitSehir">
+                                            <div class="quform-element form-group">
+                                                <label for="subject">Hizmet Götürüleceği Şehri Seçiniz <span class="quform-required">*</span></label>
+                                                <div class="quform-input">
+                                                    <select asp-for="GitSehirId" class="form-control" asp-items="ViewBag.SehirilBilgisiId">
+                                                        <option value="-1">---</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    }
+
+                                }
+                                else
+                                {
+                                    <input type="hidden" value="-1" asp-for="ServislerId" />
+                                    <input type="hidden" value="-1" asp-for="BulSehirId" />
+                                    <input type="hidden" value="-1" asp-for="GitSehirId" />
+
+                                }
+                              
+                                <div class="form-group">
+                                    <textarea asp-for="Mesaj" cols="30" rows="5" class="form-control"
+                                              placeholder="Mesaj"></textarea>
+                                </div>
+
+                                 <!-- Begin Captcha element -->
+                                            <div class="col-md-12">
+                                                <div class="quform-element">
+                                                    
+                                                    <div class="form-group">
+                                                <label> Lütfen İşlemin Sonucunu Yazınız?  <h1> @ViewBag.gvSoru</h1>  <span class="quform-required"></span></label>
+                                                             <div class="quform-input">
+                                                            <input class="form-control" asp-for="GuvenlikKodu" type="text" placeholder="Güvenlik sorusunun cevabını yazınız?" />
+                                                            <input class="form-control"  asp-for="GuvenlikKoduCevap" type="hidden"  />
+                                                            </div>
+                                                        </div>
+                                                    
+                                                </div>
+                                            </div>
+                                            <!-- End Captcha element -->
+                                <!-- Begin Submit button -->
+                                <div class="col-md-12">
+                                    <div class="quform-submit-inner">
+                                        <button class="theme-btn" type="submit"><span>Formu Gönder</span></button>
+                                    </div>
+                                    <div class="quform-loading-wrap text-start"><span class="quform-loading"></span></div>
+                                </div>
+                                <!-- End Submit button -->
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+        <p>Yönetim panalinden giriniz.</p>
+}
+
+
+ @section Scripts {
+
+		<!-- Theme JS files -->
+    	<script src="~/lib/jquery/dist/jquery.min.js"></script>
+    	<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+	@*	<script src="~/lib/jquery-validation-unobtrusive/jquery.unobtrusive-ajax.js"></script>*@
+
+
+    <script>
+        $(function () {
+            $('#BulSehir').hide();
+            $('#GitSehir').hide();
+            $('#ServislerIdKod').change(function () {
+                var id = $('#ServislerIdKod').val();
+                //debugger;
+                //alert(id);
+                var sonuc = id.split("*");
+                if (sonuc[1]=="True")
+                {
+                    $('#BulSehir').show();
+                }else{
+                    $('#BulSehir').hide();
+
+                }
+                if (sonuc[2] == "True") {
+                    $('#GitSehir').show();
+                }else {
+                      $('#GitSehir').hide();
+
+                }  
+
+
+                    })
+
+        })
+    </script>
+
+}      
+

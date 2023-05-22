@@ -1,0 +1,114 @@
+﻿@model             SlideModel
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-xl-12 stretch-card grid-margin">
+        <div class="card">
+            <div class="card-header d-flex align-items-center">
+                <h5 class="mb-0">Blog Ayarları</h5>
+                <div class="ms-auto">
+                    <label class="form-check form-switch form-check-reverse">
+                        <input type="checkbox" class="form-check-input" checked>
+                        <span class="form-check-label"></span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="card-body pb-0">
+                <form asp-action="Edit" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="row">
+                        <div class="col-md-8">
+            <div class="form-group">
+                <label asp-for="Baslik" class="control-label"></label>
+                <input asp-for="Baslik" class="form-control" />
+                <span asp-validation-for="Baslik" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Aciklama" class="control-label"></label>
+                <input asp-for="Aciklama" class="form-control" />
+                <span asp-validation-for="Aciklama" class="text-danger"></span>
+            </div>
+             
+                <input type="hidden" asp-for="Resim" class="form-control" />
+                 
+        
+            
+            <div class="form-group">
+                <label asp-for="BaslamaTarihi" class="control-label"></label>
+                <input asp-for="BaslamaTarihi" class="form-control" />
+                <span asp-validation-for="BaslamaTarihi" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BitisTarihi" class="control-label"></label>
+                <input asp-for="BitisTarihi" class="form-control" />
+                <span asp-validation-for="BitisTarihi" class="text-danger"></span>
+            </div>
+                            <input type="hidden" asp-for="Video" class="form-control" />
+
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Durum" /> @Html.DisplayNameFor(model => model.Durum)
+                </label>
+            </div>
+            
+            <div class="form-group">
+                <input type="submit" value="Kaydet" class="btn btn-primary" />
+            </div>
+
+            </div>
+                        <div class="col-md-4">
+                            <div class="card">
+                                <div class="card-header d-flex align-items-center">
+                                    <h5 class="mb-0">Resim  </h5>
+                                    <div class="ms-auto">
+                                        <label class="form-check form-switch form-check-reverse">
+                                            Yüklenecek Resim Boyutu 1920*1000 olması gerekli
+                                        </label>
+                                    </div>
+                                </div>
+                                @if (@Model.Resim is not null)
+                                {
+                                    <div class="card-body pb-3">
+                                        <div class="form-group">
+                                            <img src="@Model.Resim" style="width:-webkit-fill-available" />
+                                        </div>
+                                    </div>
+                                }
+
+
+                                <div class="card-body pb-3">
+                                    <div class="form-group">
+                                        <label name="ResimFile" class="control-label">Sayfa Resmi</label>
+                                        @*<input asp-for="KucukResim" class="form-control" />*@
+
+                                        <input type="file" name="ResimFile" class="file-input" multiple="multiple" data-show-upload="false" data-show-caption="true" data-show-preview="true">
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+            
+        </form>
+    </div>
+</div>
+
+    </div>
+</div>
+@section Scripts {
+    <script src="~/assets/js/vendor/uploaders/fileinput/fileinput.min.js"></script>
+    <script src="~/assets/js/vendor/uploaders/fileinput/plugins/sortable.min.js"></script>
+    <script src="~/assets/demo/pages/uploader_bootstrap.js"></script>
+
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

@@ -1,0 +1,96 @@
+﻿@model List<Kadromuz>
+@{
+    ViewData["Title"] = "Kadromuz";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@if (Model.Count>0)
+{
+    <!-- PAGETITLE
+      ================================================== -->
+    <section class="page-title-section bg-img cover-background top-position1 left-overlay-dark" data-overlay-dark="9" data-background="img/bg/bg-01.jpg">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1 class="text-animation" data-in-effect="fadeInUp">@ViewData["Title"]</h1>
+                </div>
+                <div class="col-md-12">
+                    <ul class="wow fadeInUp" data-wow-delay="400ms">
+                        <li><a href="index.html">Anasayfa</a></li>
+                        <li><a href="#!">@ViewData["Title"]</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- OUR PROJECTS
+    ================================================== -->
+    <section>
+        <div class="container">
+            <div class="section-title mb-2-3 mb-md-6 text-center">
+                <span class="sub-title wow text-animation" data-in-effect="fadeInRight">Kadro Listesi</span>
+                <h2 class="h1">Kadromuz</h2>
+            </div>
+            <div class="row g-xl-5 mt-n2-6 portfolio-gallery">
+                @{
+                    if (Model.Count > 0)
+                    {
+
+                        foreach (var item in Model)
+                        {
+                            var url = "/img/portfolio/portfolio-01.jpg";
+                            @if (@item.Resim is not null) url = $"{item.Resim}";
+
+
+                            <div class="col-sm-6 col-lg-4 mt-2-6"
+                     data-src="@url"
+                     data-sub-html="<h4 class='text-white'>@item.Isim</h4>">
+                                <div class="card card-style3">
+                                    <div class="card-flip-details">
+                                        <div class="card-flip-front"><img class="card-img" src="@url" alt="Portfolio thumb"></div><a class="card-flip-back" href="~/@item.SayfaUrl">
+                                            <div class="card-body">
+                                                <div class="card-body-inner">
+                                                    <h3 class="h5 mb-2">@item.Uzmanlik</h3>
+                                                    <p class="fs-sm text-muted">@Html.Raw(item.Aciklama)</p>
+                                                    <p class="butn secondary sm mb-0 portfolio-link"><span>Detaylar için tıklayınız</span></p>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+                        }
+
+                    }
+                    else
+                    {
+
+                        <div class="col-sm-6 col-lg-4 mt-2-6" data-src="img/portfolio/portfolio-01.jpg" data-sub-html="<h4 class='text-white'>Road Transportation #01</h4>">
+                            <div class="card card-style3">
+                                <div class="card-flip-details">
+                                    <div class="card-flip-front"><img class="card-img" src="img/portfolio/portfolio-01.jpg" alt="Portfolio thumb"></div><a class="card-flip-back" href="project-details.html">
+                                        <div class="card-body">
+                                            <div class="card-body-inner">
+                                                <h3 class="h5 mb-2">Road Transportation</h3>
+                                                <p class="fs-sm text-muted">Road</p>
+                                                <p class="butn secondary sm mb-0 portfolio-link"><span>View project</span></p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+                    }
+                }
+            </div>
+        </div>
+    </section>
+}

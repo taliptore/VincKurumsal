@@ -1,0 +1,205 @@
+﻿
+@model IcerikDto
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<style>
+    .ck-editor__editable {
+        min-height: 400px;
+    }
+</style>
+  <div class="row">
+              <div class="col-xl-12 stretch-card grid-margin">
+                <div class="card">
+								<div class="card-header d-flex align-items-center">
+									<h5 class="mb-0">Sayfa Ayarları </h5>
+									<div class="ms-auto">
+										<label class="form-check form-switch form-check-reverse">
+											<input type="checkbox" class="form-check-input" checked>
+											<span class="form-check-label"></span>
+										</label>
+									</div>
+								</div>
+                  
+                   <div class="card-body pb-0">
+                <form asp-action="Create"  enctype="multipart/form-data">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<div class="row">
+    <div class="col-md-8">
+                        <div class="card">
+                            <div class="card-header d-flex align-items-center">
+                                <h5 class="mb-0">Sayfa İçeriği </h5>
+                                <div class="ms-auto">
+                                    <label class="form-check form-switch form-check-reverse">
+                                        @*<input type="checkbox" class="form-check-input" checked>*@
+                                        <span class="form-check-label"></span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="card-body pb-0">
+                                
+            <div class="form-group">
+                <label asp-for="Baslik" class="control-label"></label>
+                <input asp-for="Baslik" class="form-control" />
+                <span asp-validation-for="Baslik" class="text-danger"></span>
+            </div>
+         
+            <div class="form-group">
+                <label asp-for="KisaYazi" class="control-label"></label>
+                 
+                <textarea asp-for="KisaYazi"   rows="5" class="form-control" > </textarea>
+                <span asp-validation-for="KisaYazi" class="text-danger"></span>
+            </div>
+     
+            
+            <div class="form-group">
+                                <label asp-for="Metin" class="control-label"></label>
+
+
+                                <textarea asp-for="Metin" id="ckeditor_classic_prefilled" rows="5" class="form-control" > </textarea>
+                                <span asp-validation-for="Metin" class="text-danger"></span>
+
+                            </div>
+            
+          
+           
+            <input type="hidden" asp-for="Id"  value="0" class="form-control" />
+             <input type="hidden"  asp-for="AltMenuId"  value="0" class="form-control" />
+             <input type="hidden" asp-for="MenuId"  value="0" class="form-control" />
+
+            
+            <hr />
+            <div class="form-group">
+                                        <input type="submit" value="Kaydet" class="btn btn-primary btn-block" />
+            </div>
+       
+                            </div>
+                        </div>
+      
+    </div>
+                    <div class="col-md-4">
+                            <div class="card">
+                                <div class="card-header d-flex align-items-center">
+                                    <h5 class="mb-0">Sayfayı Yayınla </h5>
+                                    <div class="ms-auto">
+                                        <label class="form-check form-switch form-check-reverse">
+                                            <input type="checkbox" class="form-check-input" checked>
+                                            <span class="form-check-label"></span>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="card-body pb-3">
+                                    <div class="form-group form-check">
+                                        <label class="form-check-label">
+                                            <input class="form-check-input" asp-for="Durum" /> Yayınla
+                                        </label>
+                                       
+                                    </div>
+                                    <hr />
+                                    <div class="btn btn-primary btn-block">
+                                        <input type="submit" value="Kaydet" class="btn btn-primary btn-block" />
+                                    </div>
+                                </div>
+                            </div>
+                        <div class="card">
+                            <div class="card-header d-flex align-items-center">
+                                <h5 class="mb-0">Seo Ayarları </h5>
+                                <div class="ms-auto">
+                                    <label class="form-check form-switch form-check-reverse">
+                                        <input type="checkbox" class="form-check-input" checked>
+                                        <span class="form-check-label"></span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="card-body pb-3">
+                                <div class="form-group">
+                                    <label asp-for="SeoBaslik" class="control-label"></label>
+                                    <input asp-for="SeoBaslik" class="form-control" />
+                                    <span asp-validation-for="SeoBaslik" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="SeoAciklama" class="control-label"></label>
+                                    <input asp-for="SeoAciklama" class="form-control" />
+                                    <span asp-validation-for="SeoAciklama" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Etiket" class="control-label"></label>
+                                    <input asp-for="Etiket" class="form-control" />
+                                    <span asp-validation-for="Etiket" class="text-danger"></span>
+                                </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header d-flex align-items-center">
+                                    <h5 class="mb-0">Sayfa Resimi </h5>
+                                    <div class="ms-auto">
+                                        <label class="form-check form-switch form-check-reverse">
+                                            <input type="checkbox" class="form-check-input" checked>
+                                            <span class="form-check-label"></span>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="card-body pb-3">
+                                    <div class="form-group">
+                                        <label asp-for="KucukResim" class="control-label">Sayfa Resmi</label>
+                                        @*<input asp-for="KucukResim" class="form-control" />*@
+                                        
+                                        <input type="file" asp-for="KucukResimFile" class="file-input" multiple="multiple" data-show-upload="false" data-show-caption="true" data-show-preview="true">
+
+
+                                        <span asp-validation-for="KucukResim" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        <div class="card">
+                            <div class="card-header d-flex align-items-center">
+                                <h5 class="mb-0">Yazar ve Sayfa Url </h5>
+                                <div class="ms-auto">
+                                    <label class="form-check form-switch form-check-reverse">
+                                        <input type="checkbox" class="form-check-input" checked>
+                                        <span class="form-check-label"></span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="card-body pb-3">
+                                    <div class="form-group">
+                                        <label asp-for="Yazar" class="control-label"></label>
+                                        <input asp-for="Yazar" class="form-control" />
+                                        <span asp-validation-for="Yazar" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="Url" class="control-label"></label>
+                                        <input asp-for="Url" class="form-control" />
+                                        <span asp-validation-for="Url" class="text-danger"></span>
+                                    </div>
+                            </div>
+                        </div>
+                        </div>
+</div>
+                </form>
+
+ </div>
+ </div>
+ </div></div>
+ @section Scripts {
+
+    <script src="~/assets/js/vendor/editors/ckeditor/ckeditor_classic.js"></script>
+     @*    enctype="multipart/form-data" bunu eklemyi unutma*@
+    @*<script src="~/assets/js/app.js"></script>*@
+    <script src="~/assets/demo/pages/editor_ckeditor_classic.js"></script>
+    @*  <script src="~/assets/js/jquery/jquery.min.js"></script>*@
+    <script src="~/assets/js/vendor/uploaders/fileinput/fileinput.min.js"></script>
+    <script src="~/assets/js/vendor/uploaders/fileinput/plugins/sortable.min.js"></script>
+    <script src="~/assets/demo/pages/uploader_bootstrap.js"></script>
+  @*  <script src="~/assets/js/app.js"></script>*@
+    @{     await Html.RenderPartialAsync("_ValidationScriptsPartial");   }
+
+
+}

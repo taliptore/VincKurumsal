@@ -1,0 +1,286 @@
+﻿@model AracSearcDto
+@{
+    ViewData["Title"] = "Arabalar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="site-breadcrumb" style="background: url(assets/img/breadcrumb/01.jpg)">
+    <div class="container">
+        <h2 class="breadcrumb-title">Araç Listesi</h2>
+        <ul class="breadcrumb-menu">
+            <li><a href="~/home/index">Anasayfa</a></li>
+            <li class="active">Liste</li>
+        </ul>
+    </div>
+</div>
+
+
+<!-- car area -->
+<div class="car-area grid bg py-120">
+    <div class="container">
+             <form asp-action="arabalar">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="car-sidebar">
+                    <div class="car-widget">
+                        <div class="car-search-form">
+                            <h4 class="car-widget-title">Arama</h4>
+                           
+                                <div class="form-group">
+                                    <input type="text" asp-for="Arama" class="form-control" placeholder="Arama">
+                                    <button type="submit"><i class="far fa-search"></i></button>
+                                </div>
+                           
+                        </div>
+                    </div>
+                        <div class="car-widget">
+                            <h4 class="car-widget-title">Araç Durumu</h4>
+                            
+                            <select asp-for="AracDurumId" class="form-select" asp-items="ViewBag.AracDurumId">
+                                <option value="-1">Tümü</option>
+                            </select>
+                        </div>
+                    <div class="car-widget">
+                        <h4 class="car-widget-title">Marka-Model</h4>
+                            <select asp-for="AracMarkaId" class="form-select" asp-items="ViewBag.AracMarkaId">
+                                <option value="-1">Tümü</option>
+                            </select>
+                            <select asp-for="AracModelId" class="form-select" asp-items="ViewBag.AracModelId">
+                                <option value="-1">Tümü</option>
+                            </select>
+                    </div>
+                   
+                        <div class="car-widget">
+                            <h4 class="car-widget-title">İl-İlçe</h4>
+                            <select asp-for="SehirilBilgisiId"  class="form-select" asp-items="ViewBag.SehirilBilgisiId">
+                                <option value="-1">Tümü</option>
+                            </select>
+                            <select asp-for="SehirilceBilgisiId" class="form-select" asp-items="ViewBag.SehirilceBilgisiId">
+                                <option value="-1">Tümü</option>
+                            </select>
+                        </div>
+                     
+                        <div class="car-widget">
+                            <h4 class="car-widget-title">Kasa Tipi</h4>
+                            <select asp-for="KasaTipiId" class="form-select" asp-items="ViewBag.KasaTipiId">
+                                <option value="-1">Tümü</option>
+                            </select>
+                        </div>
+                    <div class="car-widget">
+                        <h4 class="car-widget-title">Fiyat</h4>
+                        <div class="price-range-box">
+                            <div class="price-range-input">
+                                    <input type="text" asp-for="FiyatAralik" id="price-amount" readonly>
+                            </div>
+                            <div class="price-range"></div>
+                        </div>
+                    </div>
+                        <div class="car-widget">
+                            <h4 class="car-widget-title">Kilometre</h4>
+                            <div class="price-range-box">
+                                <div class="price-range-input">
+                                    <input type="text" asp-for="KmAralik" id="km-amount" readonly>
+                                </div>
+                                <div class="km-range"></div>
+                            </div>
+                        </div>
+                        <div class="car-widget">
+                            <h4 class="car-widget-title">Vites Tipi</h4>
+                            <select asp-for="VitesTipId" class="form-control" asp-items="ViewBag.VitesTipId">
+                                <option value="-1">Tümü</option>
+                            </select>
+                        </div>
+                        <div class="car-widget">
+                            <h4 class="car-widget-title">Yakıt Tipi</h4>
+                            <select asp-for="YakitTipiId" class="form-select" asp-items="ViewBag.YakitTipiId">
+                                <option value="-1">Tümü</option>
+                            </select>
+                        </div>
+                    <div class="car-widget">
+                        <h4 class="car-widget-title">Renk</h4>
+                            <select asp-for="AracRenkId" class="form-select" asp-items="ViewBag.AracRenkId">
+                                <option value="-1">Tümü</option>
+                            </select>
+                    </div>
+                    <div class="car-widget">
+                            <h4 class="car-widget-title">Kimden</h4>
+                            <select asp-for="KimdenId" class="form-select" asp-items="ViewBag.KimdenId">
+                                <option value="-1">Tümü</option>
+                            </select>
+                    </div>
+                 
+
+                        <div class="car-widget">
+                            <button type="submit" class="theme-btn mt-4">Listele</button>
+                        </div>
+                </div>
+            </div>
+            <div class="col-lg-9">
+                <div class="col-md-12">
+                    <div class="car-sort">
+                        <h6>Toplam İlsn Sayısı: @Model.aracBilgisis.Count()</h6>
+                      
+                        <div class="col-md-8 car-sort-box">
+                                <select class="select" asp-for="ListemeId">
+                                <option  value="1">İlan Tarihine Göre</option>
+                                <option value="2">Fiyatı Küçükten Büyüğe</option>
+                                <option value="4">Fiyatı Büyükten Küçüğe</option>
+                                <option value="3">Kilometresi Küçükten Büyüğe</option>
+                               
+
+                            </select>
+                        </div>
+                            <div class="car-sort-list-grid">
+                                <button type="submit" class="theme-btn mt-1">Listele</button>
+                                
+                            </div>
+                    </div>
+                </div>
+                <div class="row">
+                        @if ( Model.aracBilgisis is not null)
+                        {
+                            @foreach (var item in Model.aracBilgisis)
+                            {
+                                <div class="col-md-6 col-lg-4">
+                                    <div class="car-item">
+                                        <div class="car-img">
+                                            @if (@item.AracDurum.AracinDurum.ToString() == "Sıfır")
+                                            {
+                                                <span class="car-status status-2">Sıfır</span>
+                                            }
+                                            else
+                                            {
+                                                <span class="car-status status-1">İkinci El</span>
+                                            }
+                                            @if (item.AracResims.Count > 0)
+                                            {
+                                                <img src="@item.AracResims.FirstOrDefault().ResimYolu" alt="">
+                                                
+                                            }else
+                                            {
+                                                <img src="/motex/assets/img/car/01.jpg" alt="">
+                                            }
+                                            <div class="car-btns">
+                                   @* <a href="#"><i class="far fa-heart"></i></a>
+                                    <a href="#"><i class="far fa-arrows-repeat"></i></a>*@
+                                </div>
+                            </div>
+                            <div class="car-content">
+                                <div class="car-top">
+                                                <h4><a href="#">@item.AracMarka.MarkaAdi</a></h4>
+                                                <h5><a href="#">@item.AracModel.ModelAdi</a></h5>
+                                    <div class="car-rate">
+                                                    @item.SehirilBilgisi.ilAdi / @item.SehirilceBilgisi.ilceAdi
+                                    </div>
+                                </div>
+                                <ul class="car-list">
+                                                <li><i class="far fa-steering-wheel"></i>@item.VitesTip.VitesTipi</li>
+                                                <li><i class="far fa-road"></i>KM:@item.KM.ToString("N0")</li>
+                                                <li><i class="far fa-car"></i>Model: @item.Yil</li>
+                                                <li><i class="far fa-gas-pump"></i>@item.YakitTipi.YakitTip</li>
+                                </ul>
+                                <div class="car-footer">
+                                                <span class="car-price">@item.Fiyat.ToString("N0") TL</span>
+                                                <a href="~/Home/aracdetay/@item.Id" class="theme-btn"><span class="far fa-eye"></span>Detaylar</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                            }
+                        }
+                        else
+                        {
+                            <p>Listelenecek Araç Bulunamadı.</p>
+                        }
+              
+                </div>
+                <!-- pagination -->
+                <div class="pagination-area">
+                    <div aria-label="Page navigation example">
+                        <ul class="pagination">
+                            <li class="page-item">
+                                <a class="page-link" href="#" aria-label="Geri">
+                                    <span aria-hidden="true"><i class="far fa-arrow-left"></i></span>
+                                </a>
+                            </li>
+                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="#" aria-label="İleri">
+                                    <span aria-hidden="true"><i class="far fa-arrow-right"></i></span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- pagination end -->
+            </div>
+        </div>
+        </form>
+    </div>
+</div>
+<!-- car area end -->
+
+
+@section Scripts {
+    <script>
+        $(function () {
+            $('#AracMarkaId').change(function () {
+                var id = $('#AracMarkaId').val();
+                $.ajax({
+                    url: '/Home/AracModelGetir',
+                    data: { id },
+                    type: "Post",
+                    dataType: "Json",
+                    success: function (data) {
+                        //if (data.length > 0) { $('#altmenu').show(); }
+                        //else { $('#altmenu').hide(); }
+                       
+                        $('#AracModelId').empty();
+                        $('#AracModelId').append("<option value ='-1'>Tümü</option>");
+                        for (var i = 0; i < data.length; i++) {
+                            //alert(data[i]);
+                            // console.log(data[i]);
+                            $('#AracModelId').append("<option value ='" + data[i].value + "'>"
+                                + data[i].text + "</option>");
+                        }
+                    }
+                })
+
+                //alert(id);
+            })
+
+
+
+
+            $('#SehirilBilgisiId').change(function () {
+                var id = $('#SehirilBilgisiId').val();
+                $.ajax({
+                    url: '/Home/ilcegetirGetir',
+                    data: { id },
+                    type: "Post",
+                    dataType: "Json",
+                    success: function (data) {
+                        //if (data.length > 0) { $('#altmenu').show(); }
+                        //else { $('#altmenu').hide(); }
+                        debugger;
+                        $('#SehirilceBilgisiId').empty();
+                       // $('#SehirilceBilgisiId').append("<option value ='" + "-1"+ "'>"
+                          //  + Tümü + "</option>");
+                        $('#SehirilceBilgisiId').append("<option value ='-1'>Tümü</option>");
+                        for (var i = 0; i < data.length; i++) {
+                            //alert(data[i]);
+                            // console.log(data[i]);
+                            $('#SehirilceBilgisiId').append("<option value ='" + data[i].value + "'>"
+                                + data[i].text + "</option>");
+                        }
+                    }
+                })
+
+                //alert(id);
+            })
+
+        })
+    </script>
+}

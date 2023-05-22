@@ -1,0 +1,128 @@
+﻿@model GenelBilgilerDto
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+ 
+<div class="row">
+              <div class="col-xl-12 stretch-card grid-margin">
+                <div class="card">
+								<div class="card-header d-flex align-items-center">
+									<h5 class="mb-0">@ViewBag.SayfaAdi</h5>
+									<div class="ms-auto">
+										<label class="form-check form-switch form-check-reverse">
+											<input type="checkbox" class="form-check-input" checked>
+											<span class="form-check-label"> </span>
+										</label>
+									</div>
+								</div>
+                  
+                   <div class="card-body pb-0">
+                       	<div class="row">
+
+                    <form asp-action="Create" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="SiteAdresi" class="control-label"></label>
+                <input asp-for="SiteAdresi" class="form-control" />
+                <span asp-validation-for="SiteAdresi" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SiteBasligi" class="control-label"></label>
+                <input asp-for="SiteBasligi" class="form-control" />
+                <span asp-validation-for="SiteBasligi" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SiteAciklama" class="control-label"></label>
+                <input asp-for="SiteAciklama" class="form-control" />
+                <span asp-validation-for="SiteAciklama" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SiteAnahtarKelime" class="control-label"></label>
+                <input asp-for="SiteAnahtarKelime" class="form-control" />
+                <span asp-validation-for="SiteAnahtarKelime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FirmaAdi" class="control-label"></label>
+                <input asp-for="FirmaAdi" class="form-control" />
+                <span asp-validation-for="FirmaAdi" class="text-danger"></span>
+            </div>
+                        <div class="form-group">
+                            <label asp-for="FiligramYazi" class="control-label"></label>
+                            <input asp-for="FiligramYazi" class="form-control" />
+                            <span asp-validation-for="FiligramYazi" class="text-danger"></span>
+                        </div>
+                        <div class="form-group form-check">
+                            <label class="form-check-label">
+                                <input class="form-check-input" asp-for="FiligramYaziEklensinmi" /> @Html.DisplayNameFor(model => model.FiligramYaziEklensinmi)
+                            </label>
+                        </div>
+            <div class="form-group">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5 class="mb-0">Site Logo Yükle</h5>
+                                </div>
+                                @{
+                                    var url = "";
+                                    if (Model is not null)
+                                    {
+                                        if (Model.SiteLogo is not null)
+                                        {
+                                            <div class="card-header">
+                                                <h5 class="mb-0">Model.SiteLogo</h5>
+                                            </div>
+                                            url = Model.SiteLogo;
+                                        }
+                                    }
+                                   
+                                  
+                                }
+                                <div class="card-body">
+                                    <a href="@url" data-bs-popup="lightbox">
+                                        <img src="@url" alt="" class="img-preview rounded">
+                                    </a>
+                                    <p class="mb-3"> Not:</p>
+                                    
+                                    <p class="fw-semibold">Ön İzleme</p>
+                                    <input type="file" asp-for="SiteLogorsm" class="file-input" data-show-upload="false" data-show-caption="true" data-show-preview="true">
+                                </div>
+                                <span asp-validation-for="SiteLogorsm" class="text-danger"></span>
+                            </div>
+
+                 
+            </div>
+           
+                @{
+                   
+                    if (Model is null )
+                    {
+                        <input type="hidden" value="0" asp-for="Id" /> 
+                    }else
+                    {
+                        <input type="hidden" value="@Model.Id" asp-for="Id" /> 
+                    }
+                    
+            }
+          
+         @*   <div class="form-group">
+                <label asp-for="Id" class="control-label"></label>
+                <input asp-for="Id" type="hidden" class="form-control" />
+                <span asp-validation-for="Id"  class="text-danger"></span>
+            </div>*@
+
+   
+            <div class="form-group">
+                <input type="submit" value="Güncelle" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+</div>
+</div></div>
+<script src="~/assets/js/vendor/uploaders/fileinput/fileinput.min.js"></script>
+<script src="~/assets/js/vendor/uploaders/fileinput/plugins/sortable.min.js"></script>
+
+<script src="~/assets/js/app.js"></script>
+<script src="~/assets/demo/pages/uploader_bootstrap.js"></script>

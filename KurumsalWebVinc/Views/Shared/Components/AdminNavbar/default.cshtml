@@ -1,0 +1,320 @@
+﻿@model List<Menu>
+
+    
+
+	<div class="sidebar sidebar-dark sidebar-main sidebar-expand-lg">
+
+			<!-- Sidebar content -->
+			<div class="sidebar-content">
+
+				<!-- Sidebar header -->
+				<div class="sidebar-section">
+					<div class="sidebar-section-body d-flex justify-content-center">
+						<h5 class="sidebar-resize-hide flex-grow-1 my-auto">Menü</h5>
+
+						<div>
+							<button type="button" class="btn btn-flat-white btn-icon btn-sm rounded-pill border-transparent sidebar-control sidebar-main-resize d-none d-lg-inline-flex">
+								<i class="ph-arrows-left-right"></i>
+							</button>
+
+							<button type="button" class="btn btn-flat-white btn-icon btn-sm rounded-pill border-transparent sidebar-mobile-main-toggle d-lg-none">
+								<i class="ph-x"></i>
+							</button>
+						</div>
+					</div>
+				</div>
+
+                @if (TempData["Rol"].ToString() =="Admin")
+                    {
+                     <div class="sidebar-section">
+                            <ul class="nav nav-sidebar" data-nav-type="accordion">
+
+                                <!-- Main -->
+                                <li class="nav-item-header pt-0">
+                                    <div class="text-uppercase fs-sm lh-sm opacity-50 sidebar-resize-hide">@TempData["Rol"].ToString()</div>
+                                    <i class="ph-dots-three sidebar-resize-show"></i>
+                                </li>
+                                
+                    @{
+                        var gdrop = "";
+                        var dashbord = "";
+                        var gdropsub = "";
+                        var gdropkul = "";
+                        var gdropsubkul = ""; 
+                        var gdroparac = "";
+                        var gdropsubarac = "";
+                        var gdropblog = "";
+                        var gdropsubblog = "";
+                        var gmenu = "";
+                        var giletisim = "";
+                       
+                        var EpostaEdit = "";
+                        var slide = "";
+                        var Resimler = "";
+                        var SosyalMedyaAdmin = "";
+                        var Hakkimizda = "";
+                        var AdminVizyon = "";
+
+                        var usersmenu = "";
+                        var rolesmenu = "";
+                        var signUpmenu = "";
+
+
+                        var AracBilgisis = "";
+                        var AracMarkas = "";
+
+                        var BlogKategories = "";
+                        var Blog = "";
+
+                        var servisler = "";
+                        var AnaSayfaMenu = "";
+                        var Sayfa = "";
+                        var Kadro = "";
+                        var videolar = "";
+                        var talep = "";
+                        var sss = "";
+
+
+                        if (@TempData["Menu"] is not null)
+                        {
+                            if (@TempData["Menu"].ToString() == "dashbord") dashbord = "active";
+                            if (@TempData["Menu"].ToString() == "GenelBilgilerIndex") gmenu = "active";
+                            if (@TempData["Menu"].ToString() == "Iletisim") giletisim = "active";
+                            if (@TempData["Menu"].ToString() == "EpostaEdit") EpostaEdit = "active";
+                            if (@TempData["Menu"].ToString() == "slide") slide = "active";
+                            if (@TempData["Menu"].ToString() == "Resimler") Resimler = "active";
+                            if (@TempData["Menu"].ToString() == "SosyalMedyaAdmin") SosyalMedyaAdmin = "active";
+                            if (@TempData["Menu"].ToString() == "Hakkimizda") Hakkimizda = "active";
+                            if (@TempData["Menu"].ToString() == "AdminVizyon") AdminVizyon = "active";
+
+                            if (@TempData["Menu"].ToString() == "usersmenu") usersmenu = "active";
+                            if (@TempData["Menu"].ToString() == "rolesmenu") rolesmenu = "active";
+                            if (@TempData["Menu"].ToString() == "signUpmenu") signUpmenu = "active";
+
+                            if (@TempData["Menu"].ToString() == "AracBilgisis") AracBilgisis = "active";
+                            if (@TempData["Menu"].ToString() == "AracMarkas") AracMarkas = "active";
+
+                            if (@TempData["Menu"].ToString() == "BlogKategories") BlogKategories = "active";
+                            if (@TempData["Menu"].ToString() == "blog") Blog = "active";
+
+                            if (@TempData["Menu"].ToString() == "servisler") servisler = "active";
+                            if (@TempData["Menu"].ToString() == "AnaSayfaMenu") AnaSayfaMenu = "active";
+                            if (@TempData["Menu"].ToString() == "Sayfa") Sayfa = "active";
+                            if (@TempData["Menu"].ToString() == "Kadro") Kadro = "active";
+                            if (@TempData["Menu"].ToString() == "videolar") videolar = "active";
+                            if (@TempData["Menu"].ToString() == "talep") talep = "active";
+                            if (@TempData["Menu"].ToString() == "sss") sss = "active";
+
+                        }
+                        if (@TempData["dropdown"] is not null)
+                        {
+                            if (@TempData["dropdown"].ToString() == "Genel")
+                            { gdrop = "nav-item-open";
+                                gdropsub = "show";
+                            }
+                            else if (@TempData["dropdown"].ToString() == "kullanici")
+                            {
+                                gdropkul = "nav-item-open";
+                                gdropsubkul = "show";
+                            }
+                            else if (@TempData["dropdown"].ToString() == "arac")
+                            {
+                                gdroparac = "nav-item-open";
+                                gdropsubarac = "show";
+                            }
+                            else if (@TempData["dropdown"].ToString() == "blog")
+                            {
+                                gdropblog = "nav-item-open";
+                                gdropsubblog = "show";
+                            }
+
+                        }
+                    }
+                    <li class="nav-item">
+                        <a href="~/admin" class="nav-link  @dashbord">
+                            <i class="ph-circles-four"></i>
+                            <span>     DashBord     </span>
+                        </a>
+                    </li>
+                    <li class="nav-item nav-item-submenu @gdrop ">
+                                    <a href="#" class="nav-link">
+                                        <i class="ph-house"></i>
+                                        <span>Genel Ayarlar</span>
+                                    </a>
+                        <ul class="nav-group-sub collapse @gdropsub " style="">
+
+              
+                            <li class="nav-item "><a href="~/GenelBilgiler" class="nav-link @gmenu ">Genel Bilgiler</a></li>
+
+                            <li class="nav-item"><a href="~/Iletisim" class="nav-link @giletisim">İletişim Bilgileri</a></li>
+                            <li class="nav-item"><a href="~/admin/EpostaEdit" class="nav-link @EpostaEdit">Mail Ayarı</a></li>
+                            <li class="nav-item"><a href="~/slide" class="nav-link @slide">Site Silder İşlemleri</a></li>
+                                        <li class="nav-item"><a href="~/iletisim/SosyalMedyaAdmin" class="nav-link @SosyalMedyaAdmin">Sosyal Medya Hesapları</a></li>
+                                      <li class="nav-item"><a href="~/Hakkimizda" class="nav-link @Hakkimizda">Hakkımızda</a></li>
+                            <li class="nav-item"><a href="~/Hakkimizda/AdminVizyon" class="nav-link @AdminVizyon">Vizyon</a></li>
+                            
+                                    </ul>
+
+
+                                </li>
+                    <li class="nav-item nav-item-submenu @gdropkul">
+                                    <a href="#" class="nav-link">
+                                        <i class="ph-house"></i>
+                                        <span>Kullanıcı İşlemleri</span>
+                                    </a>
+                        <ul class="nav-group-sub collapse @gdropsubkul" style="">
+
+                                        <li class="nav-item"><a href="~/admin/users" class="nav-link @usersmenu">Kullanıcı Listesi</a></li>
+                                        <li class="nav-item"><a href="~/admin/roles" class="nav-link @rolesmenu">Rol Listesi</a></li>
+                            <li class="nav-item"><a href="~/admin/signUp" class="nav-link @signUpmenu">Yeni Kullanıcı Ekle</a></li>
+
+                                    </ul>
+
+
+                                </li>
+
+                    <li class="nav-item nav-item-submenu @gdroparac">
+                        <a href="#" class="nav-link">
+                            <i class="ph-house"></i>
+                            <span>Araç İşlemleri</span>
+                        </a>
+                        <ul class="nav-group-sub collapse @gdropsubarac" style="">
+
+                            <li class="nav-item"><a href="~/AracBilgisis" class="nav-link @AracBilgisis">Araç Lisesi</a></li>
+                            <li class="nav-item"><a href="~/AracMarkas" class="nav-link @AracMarkas">Marka Listesi</a></li>
+
+                        </ul>
+
+
+                    </li>
+                         
+                                <li class="nav-item">
+                                    <a href="~/Menu/AnaSayfaMenu" class="nav-link @AnaSayfaMenu">
+                                        <i class="ph-circles-four"></i>
+                                        <span>     Anasayfa Menü İşlemleri      </span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                        <a href="~/Sayfa" class="nav-link @Sayfa">
+                                        <i class="ph-note-blank"></i>
+                                        <span>     İçerik Oluşturma İşlemleri     </span>
+                                    </a>
+                                </li>
+                                <li class="nav-item nav-item-submenu @gdropblog ">
+                                    <a href="#" class="nav-link">
+                                        <i class="ph-house"></i>
+                                        <span>Blog İşlemleri</span>
+                                    </a>
+                        <ul class="nav-group-sub collapse @gdropsubblog" style="">
+
+                            <li class="nav-item"><a href="~/BlogKategories" class="nav-link @BlogKategories">Blog Kategori İşlemleri	</a></li>
+                                        <li class="nav-item"><a href="~/Blog" class="nav-link @Blog">Blog İşlemleri</a></li>
+
+
+                                    </ul>
+
+
+                                </li>
+                                <li class="nav-item">
+                                    <a href="~/servisler" class="nav-link @servisler">
+                                        <i class="ph-squares-four"></i>
+                                        <span>    Hizmetler     </span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="~/Kadro" class="nav-link @Kadro">
+                                        <i class="ph-squares-four"></i>
+                                        <span>    Mutlu Müsteri     </span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="~/videolar" class="nav-link  @videolar">
+                                        <i class="ph-squares-four"></i>
+                                        <span>    Videolar     </span>
+                                    </a>
+                                </li>
+                    <li class="nav-item">
+                        <a href="~/Resimler" class="nav-link @Resimler ">
+                            <i class="ph-squares-four"></i>
+                            <span>    Resimler     </span>
+                        </a>
+                    </li>
+                                <li class="nav-item">
+                        <a href="~/talep" class="nav-link @talep ">
+                                        <i class="ph-circles-four"></i>
+                                        <span>     Talep İşlemleri      </span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                        <a href="~/SSSes" class="nav-link @sss ">
+                                        <i class="ph-circles-four"></i>
+                                        <span>     Sık Sorulan Sorular     </span>
+                                    </a>
+                                </li>
+
+
+                    <li class="nav-item">
+                        <a href="~/Home" class="nav-link  ">
+                            <i class="ph-circles-four"></i>
+                            <span>     Anasayfa  </span>
+                        </a>
+                    </li>
+
+
+
+                                <!-- /page kits -->
+
+                            </ul>
+						</div>
+                    }else
+                        {
+                    <div class="sidebar-section">
+                            <ul class="nav nav-sidebar" data-nav-type="accordion">
+
+                                <!-- Main -->
+                                <li class="nav-item-header pt-0">
+                                    <div class="text-uppercase fs-sm lh-sm opacity-50 sidebar-resize-hide">@TempData["Rol"].ToString()</div>
+                                    <i class="ph-dots-three sidebar-resize-show"></i>
+                                </li>
+                                       <li class="nav-item">
+                                    <a href="~/admin" class="nav-link ">
+                                        <i class="ph-circles-four"></i>
+                                        <span>     DashBord     </span>
+                                    </a>
+                                </li>
+                            <li class="nav-item">
+                                <a href="~/uye/" class="nav-link ">
+                                    <i class="ph-circles-four"></i>
+                                    <span>     İlanlarım     </span>
+                                </a>
+                            </li>
+
+
+
+
+                    <li class="nav-item">
+                        <a href="~/Home" class="nav-link  ">
+                            <i class="ph-circles-four"></i>
+                            <span>     Anasayfa  </span>
+                        </a>
+                    </li>
+                               
+                                 
+                                 
+                                 
+
+
+                           
+
+
+
+                                <!-- /page kits -->
+
+                            </ul>
+						</div>
+                        }
+						
+							</div>
+					<!-- /sidebar content -->
+			
+				</div>

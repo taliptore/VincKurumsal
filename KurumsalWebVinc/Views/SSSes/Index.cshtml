@@ -1,0 +1,88 @@
+﻿@model IEnumerable<SSS>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-xl-12 stretch-card grid-margin">
+        <div class="card">
+            <div class="card-header d-flex align-items-center">
+                <h5 class="mb-0">@ViewBag.SayfaAdi </h5>
+                <div class="ms-auto">
+                    <div class="ms-auto">
+                        <a asp-action="Create"
+                           class="btn btn-primary">
+                            <i class="ph-plus">Yeni Kayıt</i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-body pb-0">
+                <div class="row">
+                    @if (Model.Count() > 0)
+                    {
+                        <table class="table media-library">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Soru)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cevap)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Durum)
+            </th>
+        
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Soru)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cevap)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Durum)
+            </td>
+
+                                        <td class="text-center">
+                                            <div class="d-inline-flex">
+                                                <a asp-action="Edit" class="text-primary " asp-route-id="@item.Id" data-bs-popup="tooltip" data-bs-original-title="Düzünle"> <i class="ph-pen"></i></a>
+                                                @*<a asp-action="Details" class="text-teal  mx-2" asp-route-id="@item.Id" data-bs-popup="tooltip" data-bs-original-title="İncele"> <i class="ph-eye"></i></a>*@
+                                                <a asp-action="Delete" class="text-danger " asp-route-id="@item.Id" data-bs-popup="tooltip" data-bs-original-title="Sil"><i class="ph-trash"></i></a>
+
+
+                                                    </div>
+                                                 
+                                             
+                                        </td>
+        </tr>
+}
+    </tbody>
+</table>
+                    }
+                    else
+                    {
+                        <p>
+                            Listelencek Kayıt Bulunmadı.
+                        </p>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    <script src="~/assets/js/vendor/tables/datatables/datatables.min.js"></script>
+    <script src="~/assets/js/vendor/media/glightbox.min.js"></script>
+    <script src="~/assets/demo/pages/gallery_library.js"></script>
+    <script src="~/js/OzelJs/DurumAktifPasifEtme.js"></script>
+ }

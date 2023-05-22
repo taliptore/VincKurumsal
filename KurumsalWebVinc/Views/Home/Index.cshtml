@@ -1,0 +1,56 @@
+﻿ @await Component.InvokeAsync("SlideView")
+
+        <!-- ABOUT
+        ================================================== -->
+         @await Component.InvokeAsync("AboutView")
+            @await Component.InvokeAsync("NedenBiz")
+
+         @await Component.InvokeAsync("ServiceView")
+           <!-- araçlistesi================================================== -->
+         @await Component.InvokeAsync("AracListesi")
+         @await Component.InvokeAsync("Paketler")
+
+        <!-- SERVICES
+        ================================================== -->
+        
+
+       
+
+<!-- WHY CHOOSE US -- uzmanlık alanları
+        ================================================== -->
+        
+        @*@await Component.InvokeAsync("UzmanlikView")*@
+
+        <!-- PROCESS -- sürec 
+        ================================================== -->
+        @* @await Component.InvokeAsync("SurecView")*@
+<div class="video-area pb-120">
+    <div class="container-fluid px-0">
+        <div class="video-content" style="background-image: url(/motex/assets/img/video/01.jpg);">
+            <div class="row align-items-center">
+                <div class="col-lg-12">
+                    <div class="video-wrapper">
+                        <a class="play-btn popup-youtube" href="~/upload/eksperyap.mp4">
+                            <i class="fas fa-play"></i>
+                            
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+        <!-- PORTFOLIO
+        ================================================== -->
+         @await Component.InvokeAsync("PortfolioView")
+        
+
+        <!-- PRICING  --teklif bölümü
+        ================================================== -->
+      @*     @await Component.InvokeAsync("TeklifView")*@
+
+        <!-- TESTIMONIALS blog
+        ================================================== -->
+       @*  @await Component.InvokeAsync("BlogView")*@
+       @* @await Component.InvokeAsync("GaleryView")*@
+        @*@await Component.InvokeAsync("VideolarView")*@

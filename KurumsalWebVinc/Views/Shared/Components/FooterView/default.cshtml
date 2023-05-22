@@ -1,0 +1,130 @@
+﻿@model IletisimBilgisi
+
+    <footer class="footer-area">
+        <div class="footer-widget">
+            <div class="container">
+                <div class="row footer-widget-wrapper pt-100 pb-70">
+                    <div class="col-md-6 col-lg-4">
+                        <div class="footer-widget-box about-us">
+                            <a href="#" class="footer-logo">
+                              
+                            <img src="/logored.png" />
+                            </a>
+                            <p class="mb-3">
+                               Hızlı Teslimat Güvenli Ekspertiz ve Müşteri Memnuniyeti Bizin En öncelikli İlkelerimizdir.
+                            </p>
+                            @if (Model is not null)
+                        {
+                            <ul class="footer-contact">
+                                <li><a href="tel:@Model.IsTel"><i class="far fa-phone"></i>@Model.IsTel</a></li>
+                                <li>
+                                    <i class="far fa-map-marker-alt"></i>
+                                    @if (Model is not null)
+                                    {
+                                        @Model.Adres
+                                    }
+                                </li>
+                                <li>
+                                    <a href="mailto:@Model.Eposta1">
+                                        <i class="far fa-envelope"></i>@Model.Eposta1
+                                    </a>
+                                </li>
+                            </ul>
+                        }
+                           
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-2">
+                        <div class="footer-widget-box list">
+                            <h4 class="footer-widget-title">Hızlı Linkler</h4>
+                            <ul class="footer-list">
+                            <li><a href="~/home/Hakkimizda"><i class="fas fa-caret-right"></i> Hakkımızda</a></li>
+                            <li><a href="~/Home/BlogSayfa"><i class="fas fa-caret-right"></i> Haberlerimiz</a></li>
+                            <li><a href="~/Home/Hizmetler"><i class="fas fa-caret-right"></i> Hizmetler</a></li>
+                            <li><a href="~/Home/Arabalar"><i class="fas fa-caret-right"></i> İlanlar</a></li>
+                             
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="footer-widget-box list">
+                            <h4 class="footer-widget-title">Destek Merkezi</h4>
+                            <ul class="footer-list">
+                            <li><a href="~/Home/sss"><i class="fas fa-caret-right"></i> S.S.S</a></li>
+
+                            <li><a href="~/Home/iletisim"><i class="fas fa-caret-right"></i> Hizmet Talebi</a></li>
+                           
+                            <li><a href="~/Home/iletisim"><i class="fas fa-caret-right"></i> İletisim</a></li>
+                                <li><a href="#"><i class="fas fa-caret-right"></i> Site Haritası</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="footer-widget-box list">
+                            <h4 class="footer-widget-title">Abone olun</h4>
+                            <div class="footer-newsletter">
+                                <p>Yeni İlanlardan Anıdna haberiniz olsun.</p>
+                                <div class="subscribe-form">
+                                    <form action="#">
+                                        <input type="email" class="form-control" placeholder=" Email">
+                                        <button class="theme-btn" type="submit">
+                                            Kaydol <i class="far fa-paper-plane"></i>
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 align-self-center">
+                        <p class="copyright-text">
+                            &copy; Copyright <span id="date"></span> <a href="#"> Eksperli Arabam </a> Aittir.
+                        </p>
+                    </div>
+                    <div class="col-md-6 align-self-center">
+                         @if (ViewBag.SOS is not null)
+                    {
+                        <ul class="footer-social">
+                            @if (ViewBag.SOS.Facebook is not null)
+                            {
+                                <li><a href="http://@ViewBag.SOS.Facebook"><i class="fab fa-facebook-f"></i></a></li>
+                            }
+                            @if (ViewBag.SOS.Twitter is not null)
+                            {
+                                <li><a href="http://@ViewBag.SOS.Twitter"><i class="fab fa-twitter"></i></a></li>
+                            }
+                            @if (ViewBag.SOS.instagram is not null)
+                            {
+                                <li><a href="http://@ViewBag.SOS.instagram"><i class="fab fa-instagram"></i></a></li>
+                            }
+                            @if (ViewBag.SOS.Youtube is not null)
+                            {
+                                <li><a href="http://@ViewBag.SOS.Youtube"><i class="fab fa-youtube"></i></a></li>
+                            }
+                        </ul>
+                    }else
+                    {
+                        <ul class="footer-social">
+                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                            <li><a href="#"><i class="fab fa-youtube"></i></a></li>
+                        </ul>
+                    }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+
+
+
+
+ 

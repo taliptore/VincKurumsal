@@ -1,0 +1,481 @@
+﻿@model 			AracBilgisi
+@{
+    ViewData["Title"] = "aracdetay";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link rel='stylesheet' href='~/gallery/css/unite-gallery.css' type='text/css' />
+
+<link rel='stylesheet' href='~/gallery/default/ug-theme-default.css' type='text/css' />
+
+
+<div class="site-breadcrumb" style="background: url(/motex/assets/img/breadcrumb/01.jpg)">
+    <div class="container">
+        <h2 class="breadcrumb-title">Araç Detay Bilgisi</h2>
+        <ul class="breadcrumb-menu">
+            <li><a href="~/home/arabalar">Araç Listesi</a></li>
+            <li class="active">Araç Detay</li>
+        </ul>
+    </div>
+</div>
+@if (Model is not null)
+{
+    <div class="car-item-single bg py-120">
+        <div class="container">
+            <div class="car-single-wrapper">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="car-single-details">
+                            <div class="car-single-widget">
+                                <div class="car-single-top">
+                                    @if (Model.AracDurum.AracinDurum.ToString() == "Sıfır")
+                                    {
+                                        <span class="car-status status-2">Sıfır</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="car-status status-1">İkinci El</span>
+                                    }
+                                    <h3 class="car-single-title">@Model.Baslik</h3>
+                                    <ul class="car-single-meta">
+                                        <li><i class="far fa-clock"></i>İlan Yayın Tarihi: @Model.CreateDate.ToShortDateString()</li>
+                                      @*  <li><i class="far fa-eye"></i> Views: 850</li>*@
+                                    </ul>
+                                </div>
+                                <div class="car-single-slider">
+                                    <div class="item-gallery">
+                                        
+                                             @if (Model.AracResims.Count > 0)
+                                           {
+                                                <div>
+                                                    <div id="gallery" style="display:none;">
+                                                        @foreach (var item in Model.AracResims)
+                                                        {
+                                                            <img id="resimler" class="resimwater" src="@item.ResimYolu"
+                                                                 data-image="@item.ResimYolu">
+                                                        }
+
+
+                                                    </div>
+
+
+                                                </div>
+                                            }
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="car-single-widget">
+                                <h4 class="mb-4">Araç Özelikleri</h4>
+                                <div class="car-key-info">
+                                    <div class="row">
+                                        <div class="col-lg-3 col-md-4 col-6">
+                                            <div class="car-key-item">
+                                                <div class="car-key-icon">
+                                                    <i class="flaticon-drive"></i>
+                                                </div>
+                                                <div class="car-key-content">
+                                                    <span>Kasa Tipi</span>
+                                                    <h6>@Model.KasaTipi.KasaTip</h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3 col-md-4 col-6">
+                                            <div class="car-key-item">
+                                                <div class="car-key-icon">
+                                                    <i class="flaticon-drive"></i>
+                                                </div>
+                                                <div class="car-key-content">
+                                                    <span>Araç Durum</span>
+                                                    <h6>@Model.AracDurum.AracinDurum</h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3 col-md-4 col-6">
+                                            <div class="car-key-item">
+                                                <div class="car-key-icon">
+                                                    <i class="flaticon-speedometer"></i>
+                                                </div>
+                                                <div class="car-key-content">
+                                                    <span>Kilometre</span>
+                                                    <h6>@Model.KM.ToString("N0") (KM)</h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3 col-md-4 col-6">
+                                            <div class="car-key-item">
+                                                <div class="car-key-icon">
+                                                    <i class="flaticon-settings"></i>
+                                                </div>
+                                                <div class="car-key-content">
+                                                    <span>Vites Tipi</span>
+                                                    <h6>@Model.VitesTip.VitesTipi</h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3 col-md-4 col-6">
+                                            <div class="car-key-item">
+                                                <div class="car-key-icon">
+                                                    <i class="flaticon-drive"></i>
+                                                </div>
+                                                <div class="car-key-content">
+                                                    <span>Yıl</span>
+                                                    <h6>@Model.Yil</h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3 col-md-4 col-6">
+                                            <div class="car-key-item">
+                                                <div class="car-key-icon">
+                                                    <i class="flaticon-gas-station"></i>
+                                                </div>
+                                                <div class="car-key-content">
+                                                    <span>Yakıt Tipi</span>
+                                                    <h6>@Model.YakitTipi.YakitTip</h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3 col-md-4 col-6">
+                                            <div class="car-key-item">
+                                                <div class="car-key-icon">
+                                                    <i class="flaticon-drive"></i>
+                                                </div>
+                                                <div class="car-key-content">
+                                                    <span>Renk</span>
+                                                    <h6>@Model.AracRenk.Renk</h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3 col-md-4 col-6">
+                                            <div class="car-key-item">
+                                                <div class="car-key-icon">
+                                                    <i class="flaticon-drive"></i>
+                                                </div>
+                                                <div class="car-key-content">
+                                                    <span>Ağır Hasarlımı</span>
+                                                    <h6>  @if (@Model.AgirHararKayitliMi == true)
+                                                        {
+                                                            @Html.Raw("Evet")
+                                                        }
+                                                        else
+                                                        {
+                                                            @Html.Raw("Hayır")
+                                                        }</h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                       
+                                      
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="car-single-widget">
+                                <div class="car-single-overview">
+                                    <h4 class="mb-3">Açıklama</h4>
+                                    <div class="mb-4">
+                                        <p>
+                                            @Html.Raw(Model.Aciklama)
+                                        </p>
+                                    </div>
+
+                                    <h4 class="mb-3">Değişen Bilgisi</h4>
+                                    <div class="row mb-3">
+                                       
+                                        <div class="col-lg-4">
+                                            <p>@Html.Raw(Model.DegisenAciklama)</p>
+                                        </div>
+                                        
+                                        
+                                    </div>
+                                    <h4 class="mb-3">Boya Bilgisi</h4>
+                                    <div class="row mb-3">
+
+                                        <div class="col-lg-4">
+                                            <p>@Html.Raw(Model.BoyaAciklama)</p>
+                                        </div>
+
+
+                                    </div>
+                                    <h4 class="mb-3">Hasar Kayıt Bilgisi</h4>
+                                    <div class="row mb-3">
+
+                                        <div class="col-lg-4">
+                                            <p>@Html.Raw(Model.HasarKaydiAciklama)</p>
+                                        </div>
+
+
+                                    </div>
+                                     
+                                  
+                                    @*<h4 class="mb-4">Location</h4>*@
+                                 @*   <div class="car-single-map">
+                                        <div class="contact-map">
+                                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d96708.34194156103!2d-74.03927096447748!3d40.759040329405195!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x4a01c8df6fb3cb8!2sSolomon%20R.%20Guggenheim%20Museum!5e0!3m2!1sen!2sbd!4v1619410634508!5m2!1sen!2s"
+                                                    style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                                        </div>
+                                    </div>*@
+                                </div>
+                            </div>
+                           
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="car-single-widget">
+                            <h4 class="car-single-price">@Model.Fiyat.ToString("N0") TL</h4>
+                            <ul class="car-single-meta">
+                                <li><i class="fa-regular fa-gauge-high"></i> @Model.KM.ToString("N0") KM</li>
+                                <li><i class="far fa-location-dot"></i> @Model.SehirilBilgisi.ilAdi / @Model.SehirilceBilgisi.ilceAdi</li>
+                            </ul>
+                        </div>
+                        <div class="car-single-widget">
+                            <div class="car-single-author">
+                                <img id="test" src="/motex/assets/img/car/author.jpg" alt="">
+                                <div class="car-single-author-content">
+                                    @if (Model.Kimden.Id == 1)
+                                    {
+                                        <h5>@Model.User.UserName</h5>
+                                        <div class="car-single-author-social">
+                                        <ul class="contact">
+                                            <li><a href="tel:@Model.ilanCep"><i class="far fa-phone"></i>@Model.ilanCep</a></li>
+                                            <li><i class="far fa-map-marker-alt"></i> @Model.SehirilBilgisi.ilAdi / @Model.SehirilceBilgisi.ilceAdi</li>
+                                            <li><a href="mailto:@Model.User.Email"><i class="far fa-envelope"></i>@Model.User.Email</a></li>
+                                        </ul>
+                                        </div>
+                                    }else
+                                    {
+                                        <h5>Eksperli Arabam</h5>
+                                        <span>Müşteri Temsilcisi</span>
+                                        <div class="car-single-author-social">
+                                        <ul class="contact">
+                                            <li><a href="tel:@Model.ilanCep"><i class="far fa-phone"></i>@Model.ilanCep</a></li>
+                                            <li><i class="far fa-map-marker-alt"></i> @Model.SehirilBilgisi.ilAdi / @Model.SehirilceBilgisi.ilceAdi</li>
+                                            <li><a href="mailto:@Model.User.Email"><i class="far fa-envelope"></i>@Model.User.Email</a></li>
+                                        </ul>
+                                        </div>
+                                    }
+                                   
+                                    <div class="car-single-author-social">
+                                        @{
+
+                                            var tel =@Model.ilanCep.Replace(" ", "").Trim().ToString();
+                                            var sonuctel ="";
+                                            if (tel.Substring(0,1)=="9")
+                                            {
+                                                sonuctel = tel;
+                                            }
+                                            else if (tel.Substring(0, 1) == "0")
+                                            {
+                                                sonuctel = "9"+tel;
+                                            }else
+                                            {
+                                                sonuctel = "90" + tel;
+                                            }   
+                                           
+                                        }
+                                        <a style='font-size:24px;color:red' target="_blank" href="https://wa.me/@sonuctel?text=Merhaba size experyapdaki ilanınız için yazıyorum.ilan adresi:https://eksperyap/Home/aracdetay/@Model.Id" tooltip="Sor"><i class="fab fa-whatsapp-square"></i>Soruları Sor</a>
+                                        <a style='font-size:24px;color:green' target="_blank" href="https://whatsapp://send?text=Eksperyapta bulduğum Güzel Araba İncele: https://eksperyap/Home/aracdetay/@Model.Id" tooltip="whatsapp ile paylaş">
+                                            <i class="fab fa-whatsapp-square"></i>Paylaş
+                                        </a>
+                                         
+                                        
+
+
+                                       @* <a href="#"><i class="fab fa-instagram"></i></a>
+                                        <a href="#"><i class="fab fa-twitter"></i></a>
+                                        <a href="#"><i class="fab fa-linkedin"></i></a>*@
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="car-single-widget">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4>Araç Expertiz Raporu </h4>
+                                </div>
+
+                                <div class="panel-body">
+
+                                    @if (@Model.AracRapors is not null)
+                                    {
+                                        <p>
+                                            <span>Başlık</span>
+
+                                            <br>
+
+                                            <strong>@Model.AracRapors.Baslik</strong>
+                                        </p>
+                                        <p>
+                                            <span>Açıklama</span>
+
+                                            <br>
+
+                                            <strong>@Model.AracRapors.Aciklama</strong>
+                                        </p>
+                                        <p>
+                                            <span>Raporu Veren Firma</span>
+
+                                            <br>
+
+                                            <strong>@Model.AracRapors.RaporuDuzunleyenFirma</strong>
+                                        </p>
+
+                                        <p>
+                                            <span>Rapor Tarihi</span>
+
+                                            <br>
+
+                                            <strong>@Model.AracRapors.RaporVerilisTarihi.ToShortDateString()</strong>
+                                        </p>
+                                        <p>
+
+
+                                            <strong><a href="@Model.AracRapors.RaporYolu" target="_blank">Raporu görmek için Tıklayınız</a></strong>
+                                        </p>
+                                    }
+                                    else
+                                    {
+                                        <p>
+
+
+                                            <strong>Araç Ekspertiz Raporu Yok.</strong>
+                                        </p>
+                                    }
+
+
+
+                                </div>
+                            </div>
+                        </div>
+                       @* <div class="car-single-widget">
+                            <h5 class="mb-3">Mesaj Gönder</h5>
+                            <div class="car-single-form">
+                                <form id="mesajgonder"  action="#">
+                                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                    <input type="hidden" asp-for="Id" />
+                                    <input type="hidden" asp-for="UserId" />
+                     
+                                    <div class="form-group">
+                                        <input type="text" id="Name" name="Name" class="form-control" placeholder="İsim" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" id="Email" name="Email" class="form-control" placeholder="Email" required>
+                                    </div>
+                                  
+                                   
+                                    <div class="form-group">
+                                        <textarea class="form-control" id="Mesaj" name="Mesaj" rows="3" placeholder="Mesaj" required></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <button type="submit" id="btnGondert" class="theme-btn">Gönder<i class="fas fa-arrow-right-long"></i></button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>*@
+                    </div>
+                </div>
+              
+            </div>
+        </div>
+    </div>
+}else
+{
+    <p>Araç Bulunamadı.</p>
+}
+
+
+ 
+@section Scripts {
+
+    <script type='text/javascript' src='~/gallery/js/jquery-11.0.min.js'></script>
+    <script type='text/javascript' src='~/gallery/js/unitegallery.min.js'></script>
+
+    <script src="~/lib/jquery/jquery.watermark.js"></script>
+
+
+    <script type='text/javascript' src='~/gallery/default/ug-theme-default.js'></script>
+
+
+
+    <script type="text/javascript">
+      
+        jQuery(document).ready(function () {
+          
+            jQuery("#gallery").unitegallery();
+
+            $('.ug-slider-wrapper img').watermark({
+                text: 'EKSPERYAP.COM',
+                textWidth: 120,
+                //gravity: 'n',
+                gravity: 'w',
+                opacity: 1,
+                margin: 20
+            });
+
+            $('.ug-strip-panel').click(function () {
+                console.log("tiklandi");
+                $('.ug-slider-wrapper img').watermark({
+                    text: 'EKSPERYAP.COM',
+                    textWidth: 120,
+                    //gravity: 'n',
+                    gravity: 'w',
+                    opacity: 1,
+                    margin: 20
+                });
+            });
+        });
+
+
+
+        
+            $("#btnGondert").click(function () {
+               // alert(tbad.value);
+                $("#btnGondert").attr("disabled", "true");
+                debugger;
+            //var MesajDto = $("#mesajgonder").serialize();
+           // var theData = JSON.stringify(theContact);
+            var MesajDtoVeri = {
+                Name: $("#Name").val(),
+                Email: $("#Email").val(),
+                Mesaj: $("#Mesaj").val(),
+                Id: @Model.Id,
+               // UserEmail: $('@Model.User.Email.ToString()').val(),
+                UserId: $('@Model.UserId.ToString()').val(),
+
+                 };
+            var MesajDto = {
+                "MesajDto": MesajDtoVeri,
+                 
+            };
+            var theData = JSON.stringify(MesajDtoVeri)
+            
+            var veri = {"Name": $("#Name").val(),
+                "Email": $("#Email").val(),
+                    "Mesaj": $("#Mesaj").val(),
+                        "Id": $("#@Model.Id").val(),
+                            "UserId": $('@Model.User.Id.ToString()').val()};
+            alert(veri);
+                $.ajax({
+                    type: "POST",
+                url: "/Home/MesajGönder",
+                    contentType: "application/json; charset=utf-8",
+
+                data:  veri ,
+                    dataType: "json",
+                success: function (data) {
+                        $("#btnGondert").removeAttr("disabled");
+                        alert("işlem tamam ")
+
+                    },
+                    error: function (data) {
+                    alert('Failed to receive the Data');
+                        $("#btnGondert").removeAttr("disabled");
+                    }
+
+                });
+            });
+   
+    </script>
+
+ 
+
+
+}

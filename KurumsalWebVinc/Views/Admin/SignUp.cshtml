@@ -1,0 +1,182 @@
+﻿@model UserDto
+@{
+	ViewData["Title"] = "";
+	Layout = "";
+}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>Kurumsal Web</title>
+
+	<!-- Global stylesheets -->
+	<link href="~/assets/fonts/inter/inter.css" rel="stylesheet" type="text/css">
+	<link href="~/assets/icons/phosphor/styles.min.css" rel="stylesheet" type="text/css">
+	<link href="~/assets/css/ltr/all.min.css" id="stylesheet" rel="stylesheet" type="text/css">
+	
+	<!-- /global stylesheets -->
+	<!-- Core JS files -->
+	<script src="~/assets/demo/demo_configurator.js"></script>
+	<script src="~/assets/js/bootstrap/bootstrap.bundle.min.js"></script>
+	<!-- /core JS files -->
+	<!-- Theme JS files -->
+	<script src="~/assets/js/app.js"></script>
+
+</head>
+
+<body>
+
+	<!-- Main navbar -->
+	<div class="navbar navbar-dark navbar-static py-2">
+		<div class="container-fluid">
+			<div class="navbar-brand">
+				<a href="~/home" class="d-inline-flex align-items-center">
+					@*<img src="~/assets/images/logo_icon.svg" alt="">*@
+					<img src="~/logored.png" class="h-48px" />Eksperli Arabam
+					@*<img src="~/assets/images/logo_text_light.svg" class="d-none d-sm-inline-block h-16px ms-3" alt="">*@
+				</a>
+			</div>
+
+			<div class="d-flex justify-content-end align-items-center ms-auto">
+				<ul class="navbar-nav flex-row">
+					
+					<li class="nav-item">
+						<a href="~/Admin/SignUp" class="navbar-nav-link navbar-nav-link-icon rounded ms-1">
+							<div class="d-flex align-items-center mx-md-1">
+								<i class="ph-user-circle-plus"></i>
+								<span class="d-none d-md-inline-block ms-2">Kayıt Ol</span>
+							</div>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a href="~/admin/login" class="navbar-nav-link navbar-nav-link-icon rounded ms-1">
+							<div class="d-flex align-items-center mx-md-1">
+								<i class="ph-user-circle"></i>
+								<span class="d-none d-md-inline-block ms-2">Giriş Yap</span>
+							</div>
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<!-- /main navbar -->
+	<!-- Page content -->
+	<div class="page-content">
+
+		<!-- Main content -->
+		<div class="content-wrapper">
+
+			<!-- Inner content -->
+			<div class="content-inner">
+
+				<!-- Content area -->
+				<div class="content d-flex justify-content-center align-items-center">
+
+					<!-- Registration form -->
+					<form asp-action="SignUp" class="flex-fill">
+						<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+						<div class="row">
+							<div class="col-lg-4 offset-lg-4">
+								<div class="card mb-0">
+									<div class="card-body">
+										<div class="text-center mb-3">
+											<div class="d-inline-flex align-items-center justify-content-center mb-4 mt-2">
+												@*<img src="~/assets/images/logo_icon.svg" class="h-48px" alt="">*@
+												<img src="~/logored.png" class="h-48px" alt="" />
+											</div>
+											<h5 class="mb-0">Hesap Oluştur</h5>											
+										</div>
+
+										<div class="mb-4">
+											<label class="form-label">Kullanıcı Adı</label>
+											<div class="form-control-feedback form-control-feedback-start">
+												<input  asp-for="UserName" class="form-control" >
+												<div class="form-control-feedback-icon">
+													<i class="ph-user-circle text-muted"></i>
+												</div>
+												<span asp-validation-for="UserName" class="text-danger"></span>
+											</div>
+										</div>
+										<div class="mb-4">
+											<label class="form-label">Telefon Numarası</label>
+											<div class="form-control-feedback form-control-feedback-start">
+												<input asp-for="PhoneNumber" class="form-control" placeholder="0 ... ... .. .. ">
+												<div class="form-control-feedback-icon">
+													<i class="ph-phone text-muted"></i>
+												</div>
+												<span asp-validation-for="PhoneNumber" class="text-danger"></span>
+											</div>
+										</div>
+										<div class="mb-4">
+											<label class="form-label">Şifre</label>
+												<div class="form-control-feedback form-control-feedback-start" >
+												<input asp-for="Password" class="form-control">
+												<span asp-validation-for="Password" class="text-danger"></span>
+													<div class="form-control-feedback-icon">
+														<i class="ph-lock text-muted"></i>
+													</div>													
+												</div>
+										</div>
+										<div class="mb-4">
+											<label class="form-label">E-posta</label>
+												<div class="form-control-feedback form-control-feedback-start">
+												
+													<input  class="form-control" placeholder="example@examle.com" asp-for="Email">
+													<div class="form-control-feedback-icon">
+														<i class="ph-at text-muted"></i>
+													</div>
+													<span asp-validation-for="Email" class="text-danger"></span>
+												</div>
+												</div>
+										<label class="form-check">
+											<input type="checkbox" name="remember" class="form-check-input">
+											<span class="form-check-label">Üyelik Sözleşmesini <a href="#"> Kabul Et</a></span>
+										</label>										
+									</div>
+									<div class="card-body text-end border-top">
+										<input type="submit" class="btn btn-primary" value="Hesap Oluştur">											
+									</div>
+								</div>
+							</div>
+						</div>
+					</form>
+					<!-- /registration form -->
+
+				</div>
+				<!-- /content area -->
+				<!-- Footer -->
+				<div class="navbar navbar-sm navbar-footer border-top">
+					<div class="container-fluid">
+						<span>&copy;Experli Arabam - 2023 </span>
+
+						
+					</div>
+				</div>
+				<!-- /footer -->
+
+			</div>
+			<!-- /inner content -->
+
+		</div>
+		<!-- /main content -->
+
+	</div>
+	<!-- /page content -->
+	@section Scripts {
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+        <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+		@{
+			await Html.RenderPartialAsync("_ValidationScriptsPartial");
+		}
+	}
+</body>
+
+</html>
+
+
+
+

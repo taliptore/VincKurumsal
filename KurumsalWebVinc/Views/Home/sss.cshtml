@@ -1,0 +1,71 @@
+﻿@model List<SSS>
+@{
+    ViewData["Title"] = "Sık Sorulan Sorular";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!-- PAGETITLE
+       ================================================== -->
+
+<div class="site-breadcrumb" style="background: url(/motex/assets/img/breadcrumb/01.jpg)">
+    <div class="container">
+        <h2 class="breadcrumb-title">S.S.S</h2>
+        <ul class="breadcrumb-menu">
+            <li><a href="~/home">Anasayfa</a></li>
+            <li class="active">S.S.S</li>
+        </ul>
+    </div>
+</div>
+
+<!-- FAQ
+================================================== -->
+<section class="faq-section position-relative">
+    <div class="container">
+        <div class="section-title text-center mb-2-6">
+            <span class="sub-title wow text-animation" data-in-effect="fadeInRight">S.S.S</span>
+            <h2 class="h1">@ViewData["Title"]</h2>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-lg-9">
+                <div class="accordion" id="accordion">
+                @if (Model.Count>0)
+                    {
+                        foreach (var item in Model)
+                        {
+                             <div class="card">
+                            <h2 class="card-header" id="headingTwo">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="true"
+                                aria-controls="collapseTwo">@item.Soru</button>
+                            </h2>
+                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordion">
+                                <div class="card-body">
+                                   @item.Cevap
+                                </div>
+                            </div>
+                        </div>
+                        }
+                       
+                    }else
+                    {
+                        <div class="card">
+                            <h2 class="card-header" id="headingTwo">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                                    Kayıt Yok Yönetim panelinden doldurunuz.</button>
+                            </h2>
+                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordion">
+                                <div class="card-body">
+                                    Kayıt Yok Yönetim panelinden doldurunuz.
+                                </div>
+                            </div>
+                        </div>
+                    }
+                 
+          
+                <br />
+                <br />
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

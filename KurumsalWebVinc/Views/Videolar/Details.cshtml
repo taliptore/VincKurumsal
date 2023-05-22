@@ -1,0 +1,59 @@
+﻿@model             Videolar
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Videolar</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.VideoBaslik)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.VideoBaslik)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.VideoAciklama)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.VideoAciklama)
+        </dd>
+    
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.YoutubeLink)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.YoutubeLink)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Durum)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Durum)
+        </dd>
+      
+    </dl>
+</div>
+  @{var link = Model.VideoYol;
+    if (Model.YoutubeLink is not null)
+        {
+        link = Model.YoutubeLink;
+        }
+        }
+<div class="mb-6 mb-lg-8 position-relative elements-block">
+    <div class="inner-title">
+        <h2 class="mb-0">@Model.VideoBaslik</h2>
+    </div>
+    <div>
+<iframe class="w-100 height-400 border-radius-5" src="@link" allow="encrypted-media" allowfullscreen></iframe>
+</div></div>
+
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Düzenle</a> |
+    <a asp-action="Index"> Listeye Dön</a>
+</div>

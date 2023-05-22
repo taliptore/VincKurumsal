@@ -1,0 +1,78 @@
+﻿@model ServisTalep
+@{
+    ViewData["Title"] = "HizmetTalep";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-xl-12 stretch-card grid-margin">
+        <div class="card">
+            <div class="card-header d-flex align-items-center">
+                <h5 class="mb-0">Hizmet Talebi Ayarı </h5>
+                <div class="ms-auto">
+                    <label class="form-check form-switch form-check-reverse">
+                        <input type="checkbox" class="form-check-input" checked>
+                        <span class="form-check-label"></span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="card-body pb-0">
+                <form asp-action="HizmetTalep" enctype="multipart/form-data">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <label asp-for="Servisler.ServisAdi" class="control-label">Hizmet Talep Adı</label>
+                                <input asp-for="Servisler.ServisAdi" disabled class="form-control" />
+                                <span asp-validation-for="Servisler.ServisAdi"  class="text-danger"></span>
+                            </div>
+                            @if (Model is null )
+                            {
+                            <input type="hidden" value="0" asp-for="Id" />
+                            }else
+                            {
+                            <input type="hidden" value="@Model.Id" asp-for="Id" />
+                            }
+                          
+                            <input type="hidden" asp-for="ServislerId" value="@Model.ServislerId" />
+                            
+                            <div class="form-group form-check">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" asp-for="BulSehirDurum"  /> @Html.DisplayNameFor(model => model.BulSehirDurum)
+                                </label>
+                            </div>
+
+                            <div class="form-group form-check">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" asp-for="GidSehirDurum" /> @Html.DisplayNameFor(model => model.GidSehirDurum)
+                                </label>
+                            </div>
+
+                            <div class="form-group form-check">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" asp-for="Durum" /> @Html.DisplayNameFor(model => model.Durum)
+                                </label>
+                            </div>
+
+                            <div class="form-group">
+                                <input type="submit" value="Kaydet" class="btn btn-primary" />
+                            </div>
+                        </div>
+                    
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+@section Scripts {
+
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+
