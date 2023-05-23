@@ -8,7 +8,7 @@
          @await Component.InvokeAsync("ServiceView")
            <!-- araçlistesi================================================== -->
          @await Component.InvokeAsync("AracListesi")
-         @await Component.InvokeAsync("Paketler")
+      @*   @await Component.InvokeAsync("Paketler")*@
 
         <!-- SERVICES
         ================================================== -->
@@ -24,7 +24,7 @@
         <!-- PROCESS -- sürec 
         ================================================== -->
         @* @await Component.InvokeAsync("SurecView")*@
-<div class="video-area pb-120">
+@*<div class="video-area pb-120">
     <div class="container-fluid px-0">
         <div class="video-content" style="background-image: url(/motex/assets/img/video/01.jpg);">
             <div class="row align-items-center">
@@ -39,7 +39,7 @@
             </div>
         </div>
     </div>
-</div>
+</div>*@
         <!-- PORTFOLIO
         ================================================== -->
          @await Component.InvokeAsync("PortfolioView")

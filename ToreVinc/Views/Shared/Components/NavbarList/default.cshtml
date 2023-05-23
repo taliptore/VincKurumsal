@@ -83,7 +83,7 @@
                                 <li class="nav-item dropdown">
                                  
 
-                                    <a class="nav-link dropdown-toggle active" href="#" data-bs-toggle="dropdown">@menu.MenuAdi</a>
+                                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">@menu.MenuAdi</a>
 
                                     <ul class="dropdown-menu fade-down">
                                         @foreach (var alt in menu.AltMenus.Where(x => x.Durum == true))
@@ -112,20 +112,7 @@
              
                   
                 </ul>
-           @*     <div class="nav-right">
-                    <div class="search-btn">
-                        <button type="button" class="nav-right-link"><i class="far fa-search"></i></button>
-                    </div>
-                    <div class="cart-btn">
-                        <a href="#" class="nav-right-link"><i class="far fa-cart-plus"></i><span>0</span></a>
-                    </div>
-                    <div class="nav-right-btn mt-2">
-                        <a href="#" class="theme-btn"><span class="far fa-plus-circle"></span>Add Listing</a>
-                    </div>
-                    <div class="sidebar-btn">
-                        <button type="button" class="nav-right-link"><i class="far fa-bars-sort"></i></button>
-                    </div>
-                </div>*@
+  
                 @if (User.Identity.IsAuthenticated)
                 {
                     <div class="nav-right">
