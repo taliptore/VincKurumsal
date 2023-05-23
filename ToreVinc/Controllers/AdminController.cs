@@ -171,7 +171,7 @@ namespace KurumsalWebVinc.Controllers
 						TempData["UserId"] = appUser.Id;
 						TempData["Userimg"] = appUser.Picture;
 
-						_mailyolla.Send(appUser.Email, "Sisteme Giriş Bilgilendirmesi ", "Sisteme Giriş Mesajı:Eksperli Arabam Sitesine Giriş Yaptınız" +
+						_mailyolla.Send(appUser.Email, "Sisteme Giriş Bilgilendirmesi ", "Sisteme Giriş Mesajı:Töre Vinç Sitesine Giriş Yaptınız" +
 							" <br> Giriş Bilgisi:" + DateTime.Now.ToString() + " İlginiz için teşekkür ederiz. <br>" +
 							" İyi günler.");
 
