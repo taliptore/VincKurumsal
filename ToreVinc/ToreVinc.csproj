@@ -26,6 +26,7 @@
 
   <ItemGroup>
     <None Remove="Controllers\ax40lgip.kq0~" />
+    <None Remove="Migrations\torevincscritp.sql" />
     <None Remove="Views\Blog\Create.cshtml~RF1006c8.TMP" />
   </ItemGroup>
 
