@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
 using System.Reflection;
-
+using ToreVinc.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -34,6 +34,10 @@ builder.Services.AddDbContext<AppDbContext>(x =>
 
 
 });
+
+// muhasebe veri tabaný
+builder.Services.AddDbContext<DbContextMuhasebe>(
+    x => x.UseSqlServer(builder.Configuration.GetConnectionString("MuhasebeConnection")));
 //seri log ayarlandý
 //log seviyeleri https://www.gencayyildiz.com/blog/asp-net-core-signalr-serisi-4-signalr-log-seviyeleri/
 builder.Host.UseSerilog((hostContext, services, configuration) => {
