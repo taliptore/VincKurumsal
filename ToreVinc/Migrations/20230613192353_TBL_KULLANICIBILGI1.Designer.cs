@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ToreVinc.Models;
 
@@ -11,9 +12,10 @@ using ToreVinc.Models;
 namespace ToreVinc.Migrations
 {
     [DbContext(typeof(DbContextMuhasebe))]
-    partial class DbContextMuhasebeModelSnapshot : ModelSnapshot
+    [Migration("20230613192353_TBL_KULLANICIBILGI1")]
+    partial class TBL_KULLANICIBILGI1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -78,97 +80,6 @@ namespace ToreVinc.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("TBL_BANKABILGILERI");
-                });
-
-            modelBuilder.Entity("ToreVinc.Models.Muhasebe.TBL_CEKLER", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
-
-                    b.Property<string>("ACIKLAMA")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ACKODU")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("ALINANCARIID")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ASILBORCLU")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("BANKA")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("BELGENO")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("BORDROID")
-                        .HasColumnType("int");
-
-                    b.Property<string>("CEKNO")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("DURUM")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("EDITDATE")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("EDITUSER")
-                        .HasColumnType("int");
-
-                    b.Property<string>("HESAPNO")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("SAVEDATE")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("SAVEUSER")
-                        .HasColumnType("int");
-
-                    b.Property<string>("SUBE")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("TAHSIL")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("TARIH")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("TIPI")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<decimal>("TUTAR")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<DateTime>("VADETARIHI")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("VERILENBANKA_BELGENO")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("VERILENBANKA_ID")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("VERILENBANKA_TARIHI")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("VERILENCARIID")
-                        .HasColumnType("int");
-
-                    b.Property<string>("VERILENCARI_BELGENO")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("VERILENCARI_TARIHI")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("ID");
-
-                    b.ToTable("TBL_CEKLER");
                 });
 
             modelBuilder.Entity("ToreVinc.Models.Muhasebe.TBL_KULLANICIBILGI", b =>

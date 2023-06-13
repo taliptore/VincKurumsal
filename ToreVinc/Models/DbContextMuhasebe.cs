@@ -11,5 +11,7 @@ namespace ToreVinc.Models
             
         }
         public DbSet<TBL_KULLANICIBILGI> TBL_KULLANICIBILGI { get; set; }
+        public DbSet<TBL_BANKABILGILERI> TBL_BANKABILGILERI { get; set; }
+        public DbSet<TBL_CEKLER> TBL_CEKLER { get; set; }
     }
 }
